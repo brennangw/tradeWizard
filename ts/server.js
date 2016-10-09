@@ -6,6 +6,10 @@ const Router = require('router')
 
 //importing our stuff
 
+//config variables
+const EXCHANGE_LOCATION = ""
+
+//counter demo
 var counter = 1;
 
 //router set up and routes
