@@ -56,7 +56,7 @@ if (process.argv[3] && process.argv[3] != 'env') {
 }
 
 if (process.argv[3] && process.argv[3] == 'ns') {
-    server.list(port);
+    server.listen(port);
     console.log("running with port at: " + port);
 } else {
     server.listen(port, ip);
