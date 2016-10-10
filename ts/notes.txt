@@ -1,0 +1,6 @@
+run with
+node server.js 8081 ns
+then go here
+http://localhost:8081/?id=3&qty=300&side=sell&price=100&interval=*/1%20*%20*%20*%20*%20*&iters=4
+
+dont forget to npm install first if it is your first time running in the current dir.
