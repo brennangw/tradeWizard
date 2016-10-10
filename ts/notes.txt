@@ -1,5 +1,5 @@
 run with
-node server.js 8081 ns
+node server.js 8081 ns {with_http or no_http}
 then go here
 http://localhost:8081/?id=3&qty=300&side=sell&price=100&interval=*/1%20*%20*%20*%20*%20*&iters=4
 
