@@ -13,9 +13,14 @@ const querystring = require('querystring');
 var ParentTrade = require('./parentTrade.js');
 
 //config variables
-const EXCHANGE_LOCATION = "http://localhost:8080/";
-const EXCHANGE_SEND_ORDER_PATH = "order"
-const EXCHANGE_SOLFP = EXCHANGE_LOCATION + EXCHANGE_SEND_ORDER_PATH;
+const EXCHANGE_INFO = {
+    host: "http://localhost",
+    port: "8080",
+    path: "/order",
+    method: "GET"
+}
+
+
 
 function getQueryFromUrl(urlIn) {
     return querystring.parse(url.parse(urlIn).query);
@@ -23,13 +28,16 @@ function getQueryFromUrl(urlIn) {
 
 //router set up and routes
 var router = Router();
+var ptIdSetter = 1;
 router.get('/', function (req, res) {
     var query = getQueryFromUrl(req.url);
-    var pt = new ParentTrade(   query["id"], query["qty"], 
+    var pt = new ParentTrade(   ptIdSetter, query["id"], query["qty"],
                                 query["side"], query["price"], 
-                                query["interval"], query["iters"], 
-                                EXCHANGE_SOLFP  );
+                                query["iters"], query["interval"],
+                                EXCHANGE_INFO,
+                                process.argv[4] === "with_http");
     pt.start();
+    ptIdSetter++;
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Hello World\n');

@@ -1,3 +1,7 @@
+var http = require('http');
+var request = require("request");
+var cron = require('node-cron');
+
 function objToParams (obj) {
     var params = "";
     for (var k in obj) {
@@ -14,21 +18,19 @@ function objToQuery (obj) {
 }
 
 var ParentTrade = 
-function (eqIdIn, qPCTIn, sideIn, priceIn, iIn, itersIn, sOLIn) {
-    var cron = require('node-cron');
+function (ptidIn, eqIdIn, qPCTIn, sideIn, priceIn, itersIn, iIn, sIn, http) {
+    this.ptid = ptidIn;
     this.equityId = eqIdIn;
     this.quantityPerChildTrade = qPCTIn;
     this.side = sideIn;
     this.price = priceIn;
-    this.interval = iIn;
     this.intervals = itersIn;
-    this.serverOrderLocation = sOLIn;
+    this.interval = iIn;
+    this.server = sIn;
     this.objToQuery = objToQuery;
     var that = this;
     var intervalsSoFar = 0;
-    console.log(that);
     this.childTrades = cron.schedule(this.interval, function() {
-        //https://trade-wizard-brennangw.c9users.io/?id=3&qty=300&side=sell&price=100&interval=*/1 * * * * *&iters=4
         intervalsSoFar++;
         var paramsObj = {
             "id" : that.equityId,
@@ -36,12 +38,30 @@ function (eqIdIn, qPCTIn, sideIn, priceIn, iIn, itersIn, sOLIn) {
             "qty" : that.quantityPerChildTrade,
             "price" : that.price
         };
-        var queryString = that.objToQuery(paramsObj);
-        var request = that.serverOrderLocation + queryString;
-        console.log("here is request #"+intervalsSoFar+": " + request);
+        var message = that.objToQuery(paramsObj);
+        var uri = that.server.host + ':' + that.server.port + that.server.path + message;
+        console.log("here is request #"+ intervalsSoFar+ ": " + uri);
+        var serverUrl = that.server.host + ':' + that.server.port + that.server.path;
+        if (http) {
+            var options = {
+                url: serverUrl,
+                path: paramsObj,
+                method: 'GET'
+            };
+            var callback = function(error, response, body) {
+                // console.log("here is the resonse for ct #" + intervalsSoFar + " of pt " + that.ptid);
+                console.log(body);
+            };
+            // var req = request(options, callback);
+            request(uri, callback);
+            // req.write(message);
+            // req.end();
+
+        }
         if (intervalsSoFar >= that.intervals) {
             that.stop();
         }
+
     });
     this.start = function start () {
         console.log('started parent trade');
