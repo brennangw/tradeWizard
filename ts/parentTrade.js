@@ -52,5 +52,4 @@ function (eqIdIn, qPCTIn, sideIn, priceIn, iIn, itersIn, sOLIn) {
         this.childTrades.stop();
     }
 }
-
 module.exports = ParentTrade;

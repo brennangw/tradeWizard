@@ -1,3 +1,7 @@
+if (process.argv[0] == "help") {
+    console.log("good luck!");
+}
+
 //3rd party modules
 const finalhandler = require('finalhandler');
 const http = require('http');
@@ -36,6 +40,25 @@ var server = http.createServer(function(req, res) {
   router(req, res, finalhandler(req, res));
 });
 
-//run the server
-server.listen(process.env.PORT, process.env.IP);
-console.log("server should be running");
+var port = process.env.PORT;
+var ip = process.env.IP;
+
+console.log("here");
+
+//set port
+if (process.argv[3] && process.argv[3] != 'env') {
+    port = process.argv[3];
+}
+
+//set ip
+if (process.argv[4] && process.argv[4] != 'env') {
+    ip = process.argv[4];
+}
+
+if (process.argv[4] && process.argv[4] == 'ns') {
+    server.list(port);
+    console.log("running with port at: " + port);
+} else {
+    server.listen(port, ip);
+    console.log("running with port at: " + port + " and ip at: " + ip);
+}
