@@ -46,16 +46,16 @@ var ip = process.env.IP;
 console.log("here");
 
 //set port
-if (process.argv[3] && process.argv[3] != 'env') {
-    port = process.argv[3];
+if (process.argv[2] && process.argv[2] != 'env') {
+    port = process.argv[2];
 }
 
 //set ip
-if (process.argv[4] && process.argv[4] != 'env') {
-    ip = process.argv[4];
+if (process.argv[3] && process.argv[3] != 'env') {
+    ip = process.argv[3];
 }
 
-if (process.argv[4] && process.argv[4] == 'ns') {
+if (process.argv[3] && process.argv[3] == 'ns') {
     server.list(port);
     console.log("running with port at: " + port);
 } else {
