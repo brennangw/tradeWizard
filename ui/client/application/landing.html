@@ -18,8 +18,23 @@
             {{> modalContent}}
         </div>
     </div>
-
-    <!--TODO Enter the dynamic table here-->
+    <br>
+    <div class="table-responsive">
+        <table class="table">
+            <div class="tradeTable">
+                {{> reactiveTable collection=replies showFilter=false}}
+            </div>
+        </table>
+        <div class="tradeTable">
+            <tr>
+                <td>
+                    {{#each replies}}
+                        {{> reply}}
+                    {{/each}}
+                </td>
+            </tr>
+        </div>
+    </div>
 
 </template>
 
