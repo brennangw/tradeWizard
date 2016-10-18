@@ -2,7 +2,7 @@ Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',
     notFoundTemplate: 'notFound',
-    landingTemplate: 'landing',
+    landingTemplate: 'landing'
 });
 
 var requireLogin = function() {
@@ -22,5 +22,5 @@ var requireLogin = function() {
 Router.onBeforeAction(requireLogin, {only: 'landing'});
 
 Router.route('/', {
-    name: 'landing',
+    name: 'landing'
 });

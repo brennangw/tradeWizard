@@ -1,5 +1,6 @@
 import { Meteor } from 'meteor/meteor';
 
+//noinspection BadExpressionStatementJS
 Meteor.startup(() => {
-  // code to run on server at startup
+
 });
