@@ -1,3 +1,34 @@
 <template name="landing">
-<h2>You logged in!</h2>
+    <!--Container to align modal button-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-7">
+            </div>
+            <div class="col-sm-2">
+                <!-- Create order button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createOrder">Create Order</button>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div id="createOrder" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create Order</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Here I need to input a form that can take the data that we need</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </template>
