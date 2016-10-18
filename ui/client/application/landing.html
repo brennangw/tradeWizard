@@ -54,36 +54,37 @@
 
 <template name="createOrderForm">
     <div class="container">
-        <form>
+        <form class="submitOrderForm">
             <div class="form-group row">
                 <label for="etf_symbol" class="col-sm-2 col-form-label">ETF Symbol:</label>
                 <div class="col-sm-4">
-                    <input type="form" class="form-control" id="etf_symbol" placeholder="ETF">
+                    <input type="text" class="form-control" id="etf_symbol" value="ACME">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="orderqty" class="col-sm-2 col-form-label">Order Quantity:</label>
+                <label for="orderQty" class="col-sm-2 col-form-label">Order Quantity:</label>
                 <div class="col-sm-4">
-                    <input type="form" class="form-control" id="orderqty" placeholder="500">
+                    <input type="text" class="form-control" id="orderQty" value="500">
                 </div>
             </div>
             <div class="form-group row">
                 <label for="strategy" class="col-sm-2 col-form-label">Trading Strategy:</label>
                 <div class="col-sm-4">
-                    <!--TODO Turn this form into a drop down select type list-->
-                    <input type="form" class="form-control" id="strategy" placeholder="Trading Strategy">
+                    <select class="form-control" id="strategy">
+                        <option>Time-Weighted Average (TWA)</option>
+                    </select>
                 </div>
             </div>
             <!-- TODO Enter date picker for urgency here-->
             <div class="form-group row">
                 <label for="account" class="col-sm-2 col-form-label">Account Number:</label>
                 <div class="col-sm-4">
-                    <input type="form" class="form-control" id="account" placeholder="Account Number">
+                    <input type="text" class="form-control" id="account" placeholder="Account Number">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="offset-sm-6 col-sm-10">
-                    <button type="submit" class="btn btn-danger">SELL</button>
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">SELL</button>
                 </div>
             </div>
         </form>
