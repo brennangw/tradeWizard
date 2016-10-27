@@ -1,9 +1,5 @@
-/**
- * Created by ishanguru on 10/18/16.
- */
 
 //Landing page helper functions
-
 Replies = Meteor.Collection("replies");
 
 Template.landing.helpers({
@@ -12,23 +8,21 @@ Template.landing.helpers({
     }
 });
 
-Template.landing.events({
-    'submit .submitOrderForm'(event) {
+Template.createOrderForm.events({
+    'submit .submitOrderForm': function(event) {
         // Prevent default browser form submit
         event.preventDefault();
 
         // Get value from form element
-        const target = event.target;
-        const symbol = target.etf_symbol.value;
-        const orderQty = target.orderQty.value;
-        const strategy = target.strategy.value;
-        const account = target.account.value;
-
-        console.log(event);
-
-        // TODO Here we would make the REST call that starts up the Node-exchange server
+         var symbol = event.target.etf_symbol.value;
+         var orderQty = event.target.orderQty.value;
+         var strategy = event.target.strategy.value;
+         var account = event.target.account.value;
 
         // Clear form
-        target.text.value = '';
+        symbol = '';
+        orderQty = '';
+        strategy = '';
+        account = '';
     }
 });
