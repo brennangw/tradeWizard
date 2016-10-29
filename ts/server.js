@@ -14,18 +14,10 @@ const querystring = require('querystring');
 
 //importing our stuff
 var ParentTrade = require('./parentTrade.js');
-
-//config variables
-const EXCHANGE_INFO = {
-    host: "http://localhost",
-    port: "8080",
-    path: "/order",
-    method: "GET"
-};
+const EXCHANGE = require('./exchange.js');
 
 
 //connect to db
-
 var db_url = process.argv[4];
 
 var db = mongojs(db_url);
@@ -47,7 +39,7 @@ router.get('/', function (req, res) {
     var pt = new ParentTrade(   ptIdSetter, query["id"], query["qty"],
                                 query["side"], query["price"], 
                                 query["iters"], query["interval"],
-                                EXCHANGE_INFO, db,
+                                EXCHANGE, db,
                                 process.argv[3] === "with_http");
     pt.start();
     ptIdSetter++;
