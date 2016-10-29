@@ -24,11 +24,9 @@ const EXCHANGE_INFO = {
 };
 
 
-
-
 //connect to db
 
-var db_url = process.argv[5];
+var db_url = process.argv[4];
 
 var db = mongojs(db_url);
 var collections = {
@@ -50,7 +48,7 @@ router.get('/', function (req, res) {
                                 query["side"], query["price"], 
                                 query["iters"], query["interval"],
                                 EXCHANGE_INFO, db,
-                                process.argv[4] === "with_http");
+                                process.argv[3] === "with_http");
     pt.start();
     ptIdSetter++;
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
@@ -63,24 +61,6 @@ var server = http.createServer(function(req, res) {
   router(req, res, finalhandler(req, res));
 });
 
-var port = process.env.PORT;
-var ip = process.env.IP;
-
-
-//set port
-if (process.argv[2] && process.argv[2] != 'env') {
-    port = process.argv[2];
-}
-
-//set ip
-if (process.argv[3] && process.argv[3] != 'env') {
-    ip = process.argv[3];
-}
-
-if (process.argv[3] && process.argv[3] == 'ns') {
-    server.listen(port);
-    console.log("running with port at: " + port);
-} else {
-    server.listen(port, ip);
-    console.log("running with port at: " + port + " and ip at: " + ip);
-}
+//start the server
+server.listen(process.argv[2]);
+console.log("running");
