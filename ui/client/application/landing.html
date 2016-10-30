@@ -6,20 +6,19 @@
             </div>
             <div class="col-sm-7">
             </div>
-
             <div class="col-sm-2">
                 <!-- Create order button -->
-                <button type="button" class="btn btn-info btn-lg"  data-toggle="modal" data-target="#createOrder">Create Order</button>
-
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createOrderModal">Create Order</button>
             </div>
         </div>
     </div>
     <!-- Modal -->
-    <div id="createOrder" class="modal fade" role="dialog">
-        <div class="modal-dialog" >
+    <div id="createOrderModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
             {{> modalContent}}
         </div>
     </div>
+    <!--{{> createOrderForm}}-->
     <br>
     <div class="table-responsive">
         <table class="table">
@@ -81,12 +80,12 @@
             <div class="form-group row">
                 <label for="account" class="col-sm-2 col-form-label">Account Number:</label>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" id="account" placeholder="Account Number" required>
+                    <input type="text" class="form-control" id="account" placeholder="Account Number" value="123456789" required>
                 </div>
             </div>
             <div class="form-group row">
                 <div class="offset-sm-6 col-sm-10">
-                    <button type="submit" class="createOrderForm">SELL</button>
+                    <input type="submit" class="btn btn-primary" id="sell_button" value="SELL">
                 </div>
             </div>
         </form>
