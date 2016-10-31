@@ -14,6 +14,8 @@ Template.landing.events({
     // }
 });
 
+
+
 Template.createOrderForm.events({
     'submit .submitOrderForm': function(event) {
         event.preventDefault();

@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-7">
             </div>
-            <div class="col-sm-7">
+            <div class="col-md-1">
                 <!-- Create order button -->
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createOrderModal" align="left">Place Order</button>
             </div>
@@ -21,19 +21,32 @@
     <!--{{> createOrderForm}}-->
     <br>
     <div class="table-responsive">
-        <table class="table">
+        <table class="table table-bordered">
             <div class="tradeTable">
                 {{> reactiveTable collection=replies showFilter=false}}
             </div>
         </table>
         <div class="tradeTable">
-            <tr>
-                <td>
-                    {{#each replies}}
-                        {{> reply}}
-                    {{/each}}
-                </td>
-            </tr>
+            <table class="table table-bordered table-striped table-active">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Order ID</th>
+                        <th>ETF Symbol</th>
+                        <th>Order Quantity</th>
+                        <th>Trading Strategy</th>
+                        <th>Account Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--<tr>
+                        <td>
+                            {{#each replies}}
+                                {{> reply}}
+                            {{/each}}
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
         </div>
     </div>
 
