@@ -29,16 +29,15 @@ Template.createOrderForm.events({
         var strategy = target.strategy.value;
         var account = target.account.value;
         var side;
+        console.log(target.sell_button.value);
 
-        if(target.sell_button.value) {
-            side = "sell";
-        }
-
+        side = "sell";
         console.log(symbol);
         console.log(orderQty);
         console.log(strategy);
         console.log(account);
         console.log(side);
+
 
         //Call the request to the endpoint here
 
@@ -49,3 +48,4 @@ Template.createOrderForm.events({
 
     }
 });
+
