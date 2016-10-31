@@ -1,3 +1,6 @@
+
+
+
 <template name="landing">
     <!--Container to align modal button-->
     <div class="container">
@@ -23,18 +26,11 @@
     <div class="table-responsive">
         <table class="table">
             <div class="tradeTable">
-                {{> reactiveTable collection=replies showFilter=false}}
+                {{> reactiveTable collection=Replies fields=fields showFilter=false showNavigation=auto}}
             </div>
+           
         </table>
-        <div class="tradeTable">
-            <tr>
-                <td>
-                    {{#each replies}}
-                        {{> reply}}
-                    {{/each}}
-                </td>
-            </tr>
-        </div>
+
     </div>
 
 </template>

@@ -1,12 +1,44 @@
+Meteor.subscribe('replies');
+var Replies = new Meteor.Collection('replies');
+
+if (Meteor.isClient) {
+
+    Template.landing.helpers({
+        fields: function () {
+            return ['Id','Quantity','Side', 'Average Price', 'Timestamp'];
+        }
+    });
+
+
+   // Template.landing.helpers({
+    //    fields : function () {
+      //      return Replies.find().fetch();
+       // return['',''];
+       // }
+    //});
+}
+
+if (Meteor.isServer) {
+    Meteor.startup(function () {
+
+    });
+
+    ReactiveTable.publish('replies', function () { return Replies; });
+}
+
+
+
 
 //Landing page helper functions
-// Replies = Meteor.Collection("replies");
+//Meteor.subscribe('replies');
+//Replies = new Meteor.Collection("replies");
 
-Template.landing.helpers({
-    // replies : function () {
-    //     return Replies.find({});
-    // }
-});
+
+//Template.landing.helpers({
+    //replies : function () {
+    //return Replies.find().fetch();
+  //   }
+//});
 
 Template.landing.events({
     // 'submit form': function(event) {

@@ -1,7 +1,13 @@
-import { Meteor } from 'meteor/meteor';
+//import { Meteor } from 'meteor/meteor';
+
+//Meteor.startup( function() {
+// console.log(Replies.findOne());
+//});
 
 Meteor.startup(function() {
+
     Meteor.methods({
+
     sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber) {
         this.unblock();
         console.log("Sending request to node server. Parameters:");
