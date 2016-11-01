@@ -9,7 +9,12 @@ var Server = function (db, exchange) {
 
     //set up router
     this.router = Router();
-    var ptIdSetter = 1; //will replace with a db collection variable
+
+    var ptIdSetter = null;
+    // var ptIdSetter = 1;
+    db.currentPid.findOne({}, function (err,doc) {
+        ptIdSetter = doc.pid;
+    });
     this.router.get('/', function (req, res) {
         var query = querystring.parse(url.parse(req.url).query);
         var pt = new ParentTrade(
@@ -18,6 +23,13 @@ var Server = function (db, exchange) {
         );
         pt.start();
         ptIdSetter++;
+        db.currentPid.update({}, { $inc: { pid: 1 } }, function (err,doc) {
+            console.log("increment");
+            console.log(doc.pid);
+            if (err) {
+                console.log(err);
+            }
+        });
         res.setHeader('Content-Type', 'text/plain; charset=utf-8');
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.end('Aye aye!\n');
