@@ -23,7 +23,7 @@ Template.landing.helpers({
                 { key: 'qty', label: 'Quantity' },
                 { key: 'side', label: 'Side (Buy/Sell)' },
                 { key: 'avg_price', label: 'Average Price' },
-                { key: 'timestamp', label: 'Time Stamp' },
+                { key: 'timestamp', label: 'Time Stamp', sortDirection: 'descending', sortOrder: 0 }
             ]
 
         };
