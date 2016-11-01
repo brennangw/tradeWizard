@@ -23,9 +23,7 @@ var Server = function (db, exchange) {
         );
         pt.start();
         ptIdSetter++;
-        db.currentPid.update({}, { $inc: { pid: 1 } }, function (err,doc) {
-            console.log("increment");
-            console.log(doc.pid);
+        db.currentPid.update({}, { $inc: { pid: 1 } }, function (err) {
             if (err) {
                 console.log(err);
             }
