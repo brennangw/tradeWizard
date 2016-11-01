@@ -1,44 +1,35 @@
-Meteor.subscribe('replies');
-var Replies = new Meteor.Collection('replies');
-
-if (Meteor.isClient) {
-
-    Template.landing.helpers({
-        fields: function () {
-            return ['Id','Quantity','Side', 'Average Price', 'Timestamp'];
-        }
-    });
-
-
-   // Template.landing.helpers({
-    //    fields : function () {
-      //      return Replies.find().fetch();
-       // return['',''];
-       // }
-    //});
-}
-
-if (Meteor.isServer) {
-    Meteor.startup(function () {
-
-    });
-
-    ReactiveTable.publish('replies', function () { return Replies; });
-}
-
-
-
 
 //Landing page helper functions
-//Meteor.subscribe('replies');
-//Replies = new Meteor.Collection("replies");
+// Template.landing.onCreated( function () {
+// });
 
+Meteor.subscribe("replies");
 
-//Template.landing.helpers({
-    //replies : function () {
-    //return Replies.find().fetch();
-  //   }
-//});
+Template.landing.helpers({
+    replies_function : function () {
+        // console.log("Calling find function");
+        console.log(Replies.findOne({}));
+        //return (Replies.find({},{sort: {timestamp: -1}}));
+        return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
+      //  .sort({age:-1}).limit(1)
+    },
+
+    tableSettings : function () {
+        return {
+            rowsPerPage: 10,
+            showNavigation: 'auto',
+            fields: [
+                { key: 'id', label: 'Parent Trade ID' },
+                { key: 'qty', label: 'Quantity' },
+                { key: 'side', label: 'Side (Buy/Sell)' },
+                { key: 'avg_price', label: 'Average Price' },
+                { key: 'timestamp', label: 'Time Stamp' },
+            ]
+
+        };
+    }
+
+});
 
 Template.landing.events({
     // 'submit form': function(event) {
@@ -83,3 +74,22 @@ Template.createOrderForm.events({
     }
 });
 
+
+
+Template.ChildOrders.events({
+    'submit .submitChildForm': function(event) {
+        event.preventDefault();
+
+        // console.log(event.type);
+        // console.log("Form submitted");
+
+        $('#childModal').modal('hide');
+
+        var target = event.target;
+        var symbol = target.etf_symbol.value;
+
+
+
+
+    }
+});

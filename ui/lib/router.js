@@ -1,3 +1,5 @@
+//Replies = new Mongo.Collection("replies");
+
 Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',
