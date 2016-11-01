@@ -1,17 +1,12 @@
 
 //Landing page helper functions
-// Template.landing.onCreated( function () {
-// });
 
 Meteor.subscribe("replies");
-
 Template.landing.helpers({
     replies_function : function () {
-        // console.log("Calling find function");
         console.log(Replies.findOne({}));
-        //return (Replies.find({},{sort: {timestamp: -1}}));
         return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
-      //  .sort({age:-1}).limit(1)
+
     },
     // tradeWizard login screen.png
     tableSettings : function () {
