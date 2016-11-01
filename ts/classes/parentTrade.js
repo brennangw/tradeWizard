@@ -17,24 +17,30 @@ function (id, eqId, qty, side, price, intervals, interval, exchange, db) {
     this.intervalsSoFar = 0;
     var that = this;
 
-    //todo: may need to do one trade if there is not an option
-    //to run this right away.
-    this.childTradeSechdule = cron.schedule(this.interval, function() {
-        that.intervalsSoFar++;
+    //todo: may need to do one trade if there is not an option to run this right away.
 
-        var currentChildTrade = new ChildTrade(that.intervalsSoFar, that.equityId,
-            that.side, that.qty, that.price, that.id, that.db);
-        that.exchange.submitTrade(currentChildTrade, that.db);
-        console.log("sending child trade id# "+ currentChildTrade.id);
+    //todo: use a scheduler to divide up the trade
 
-        if (that.intervalsSoFar >= that.intervals) {
-            that.stop();
-        }
-    });
+    // this.childTradeSchedule = cron.schedule(this.interval, function() {
+    //     that.intervalsSoFar++;
+    //
+    //     var currentChildTrade = new ChildTrade(that.intervalsSoFar, that.equityId,
+    //         that.side, that.qty, that.price, that.id, that.db);
+    //     that.exchange.submitTrade(currentChildTrade, that.db);
+    //     console.log("sending child trade id# "+ currentChildTrade.id);
+    //
+    //     if (that.intervalsSoFar >= that.intervals) {
+    //         that.stop();
+    //     }
+    // });
 
     this.start = function start () {
         console.log('started parent trade');
-        this.childTradeSechdule.start();
+        // this.childTradeSchedule.start();
+        //todo: use a scheduler to divide up the trade.
+        var currentChildTrade = new ChildTrade(0, that.equityId,
+            that.side, that.qty, that.price, that.id, that.db);
+        that.exchange.submitTrade(currentChildTrade, that.db);
     };
 
     this.stop = function () {

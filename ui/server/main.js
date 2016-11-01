@@ -15,14 +15,18 @@ Meteor.startup(function() {
             console.log(tradeStrategy);
             console.log(accountNumber);
 
-            try {
-                var request = Meteor.http.call("GET", "http://localhost:" + PORT +
-                    "/?id=3&" +
-                    "qty=" + orderQty +
-                    "&side=" + side +
-                    "&price=100" +
-                    "&interval=*/1%20*%20*%20*%20*%20*" +
-                    "&iters=4");
+        try {
+            request_string = "http://localhost:" + PORT +
+                "/?id=3&" +
+                "qty=" + orderQty +
+                "&side=" + side +
+                "&price=100" +
+                "&interval=*/1%20*%20*%20*%20*%20*" +
+                "&iters=4";
+            var request = Meteor.http.call("GET", request_string);
+            console.log(request_string);
+            console.log(request);
+
             }
             catch(err){
                 console.log(err.message);

@@ -8,19 +8,22 @@ Template.landing.helpers({
         return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
 
     },
-
+    // tradeWizard login screen.png
     tableSettings : function () {
         return {
             rowsPerPage: 10,
             showNavigation: 'auto',
             fields: [
-                { key: 'id', label: 'Parent Trade ID' },
+                { key: 'parentTradeId', label: 'Parent Trade ID'},
                 { key: 'qty', label: 'Quantity' },
-                { key: 'side', label: 'Side (Buy/Sell)' },
+                { key: 'side', label: 'Side' },
                 { key: 'avg_price', label: 'Average Price' },
-                { key: 'timestamp', label: 'Time Stamp', sortDirection: 'descending', sortOrder: 0 }
-            ]
-
+                { key: 'status', label: 'Execution Status' },
+                { key: 'readable_time', label: 'Time', hidden: false},
+                { key: 'time', label: 'Time', sortDirection: 'descending', sortOrder: 0, hidden: true}
+            ],
+            showFilter: false,
+            useFontAwesome: true
         };
     }
 
@@ -69,20 +72,3 @@ Template.createOrderForm.events({
     }
 });
 
-
-
-Template.ChildOrders.events({
-    'submit .submitChildForm': function(event) {
-        event.preventDefault();
-
-        // console.log(event.type);
-        // console.log("Form submitted");
-
-        $('#childModal').modal('hide');
-
-        var target = event.target;
-        var symbol = target.etf_symbol.value;
-
-
-    }
-});
