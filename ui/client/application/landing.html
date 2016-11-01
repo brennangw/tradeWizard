@@ -1,4 +1,3 @@
-
 <template name="landing">
     <!--Container to align modal button-->
     <div class="container">
@@ -9,8 +8,7 @@
             </div>
             <div class="col-sm-2">
                 <!-- Create order button -->
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createOrderModal">Create Order</button>
-                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#childModal">View Child Orders</button>
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createOrderModal" align="left">Place Order</button>
             </div>
         </div>
     </div>
@@ -20,33 +18,29 @@
             {{> modalContent}}
         </div>
     </div>
-
-
-    <!--{{> createOrderForm}}-->
     <br>
     <div class="table-responsive">
-        <table class="table>">
-    <div class="tradeTable">
-        {{>reactiveTable collection="replies" settings=tableSettings }}
-    </div>
+        <table class="table">
+            <div class="tradeTable">
+                {{>reactiveTable collection="replies" settings=tableSettings }}
+            </div>
         </table>
-    <div class="tradeTable">
-        <tr>
-            <td>
-        {{#each replies_function}}
-            {{> reply}}
-        {{/each}}
-            </td>
-        </tr>
+        <div class="tradeTable">
+            <tr>
+                <td>
+            {{#each replies_function}}
+                {{> reply}}
+            {{/each}}
+                </td>
+            </tr>
+        </div>
     </div>
-    </div>
-
 </template>
 
 <template name="modalContent">
     <div class="modal-content">
         <div class="modal-header">
-            <h4 class="modal-title">Place Order</h4>
+            <h4 class="modal-title">Create Order</h4>
         </div>
         <div class="modal-body">
             {{> createOrderForm}}
@@ -90,8 +84,10 @@
             <div class="form-group row">
                 <div class="col-xs-3">
                     <input type="submit" class="btn btn-danger col-sm-3 btn-block" id="sell_button" value="SELL">
-                    <input type="submit" class="btn btn-success col-sm-3 btn-block" id="buy_button" value="BUY" disabled>
                 </div>
+                <!--<div class="col-xs-3">-->
+                    <!--<input type="submit" class="btn btn-success col-sm-3 btn-block" id="buy_button" value="BUY" disabled>-->
+                <!--</div>-->
             </div>
         </form>
     </div>
