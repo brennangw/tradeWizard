@@ -12,6 +12,11 @@ var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
         console.log("response for child trade id#" + that.id +
             " of pt id#" + that.parentTradeId);
         console.log(body);
+        // var response = Object.assign({
+        //   time : Date.now(),
+        //   parentTradeId : that.parentTradeId,
+        //   childTrade : that.childTradeId
+        // }, JSON.parse(body));
         var response = Object.assign({time : Date.now()}, JSON.parse(body));
         that.db.replies.save(response, function(err, doc) {
             if (err) {
