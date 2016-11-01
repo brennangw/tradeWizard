@@ -1,4 +1,4 @@
-//get commnad line arguments
+// get command line arguments
 const serverPort = process.argv[2];
 const exchangeLocation = process.argv[3];
 const mongoLocation = process.argv[4];

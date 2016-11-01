@@ -1,3 +1,5 @@
+var moment = require('moment-timezone');
+
 var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
     this.id = id;
     this.equityId = equityId;
@@ -12,12 +14,12 @@ var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
         console.log("response for child trade id#" + that.id +
             " of pt id#" + that.parentTradeId);
         console.log(body);
-        // var response = Object.assign({
-        //   time : Date.now(),
-        //   parentTradeId : that.parentTradeId,
-        //   childTrade : that.childTradeId
-        // }, JSON.parse(body));
-        var response = Object.assign({time : Date.now()}, JSON.parse(body));
+        var response = Object.assign({
+          readable_time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z"),
+          time : Date.now(),
+          parentTradeId : that.parentTradeId,
+          childTrade : that.id
+        }, JSON.parse(body));
         that.db.replies.save(response, function(err, doc) {
             if (err) {
                 console.log("replies save callback error");
