@@ -24,6 +24,7 @@ Template.landing.helpers({
                 { key: 'side', label: 'Side' },
                 { key: 'avg_price', label: 'Average Price' },
                 { key: 'status', label: 'Execution Status' },
+                { key: 'readable_time', label: 'Time', hidden: false},
                 { key: 'time', label: 'Time', sortDirection: 'descending', sortOrder: 0, hidden: true}
             ],
             showFilter: false,
