@@ -19,13 +19,15 @@ Template.landing.helpers({
             rowsPerPage: 10,
             showNavigation: 'auto',
             fields: [
-                { key: 'id', label: 'Parent Trade ID' },
+                { key: 'parentTradeId', label: 'Parent Trade ID'},
                 { key: 'qty', label: 'Quantity' },
                 { key: 'side', label: 'Side' },
                 { key: 'avg_price', label: 'Average Price' },
+                { key: 'status', label: 'Execution Status' },
                 { key: 'time', label: 'Time', sortDirection: 'descending', sortOrder: 0, hidden: true}
             ],
-            showFilter: false
+            showFilter: false,
+            useFontAwesome: true
         };
     }
 
