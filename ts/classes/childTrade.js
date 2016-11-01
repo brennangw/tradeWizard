@@ -14,12 +14,14 @@ var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
         console.log("response for child trade id#" + that.id +
             " of pt id#" + that.parentTradeId);
         console.log(body);
+        var bodyAsJson = JSON.parse(body);
         var response = Object.assign({
           readable_time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z"),
           time : Date.now(),
           parentTradeId : that.parentTradeId,
+          status : ((bodyAsJson.qty === 0) ? "FAILURE" : "SUCCESS"), //todo: remove this tmp fix for UI
           childTrade : that.id
-        }, JSON.parse(body));
+        }, bodyAsJson);
         that.db.replies.save(response, function(err, doc) {
             if (err) {
                 console.log("replies save callback error");
