@@ -1,0 +1,8 @@
+{
+  "name": "pinger",
+  "version": "0.0.1",
+  "dependencies": {
+    "mongojs": "^2.4.0",
+    "node-cron": "^1.1.2"
+  }
+}
