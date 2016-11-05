@@ -1,0 +1,24 @@
+{
+  "tests": "./*_test.js",
+  "timeout": 10000,
+  "output": "./output",
+  "helpers": {
+        "WebDriverIO" : {
+            "url" : "http://localhost:3000/",
+            "browser": "chrome",
+            "restart": false,
+            "windowSize": "maximize",
+            "timeouts": {
+                "script": 60000,
+                "page load": 10000,
+                "implicit" : 5000
+             }
+      }
+  },
+  "include": {
+    "I": "./steps_file.js"
+  },
+  "bootstrap": false,
+  "mocha": {},
+  "name": "codeceptjs"
+}
