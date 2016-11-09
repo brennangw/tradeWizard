@@ -14,7 +14,12 @@ var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
         console.log("response for child trade id#" + that.id +
             " of pt id#" + that.parentTradeId);
         console.log(body);
-        var bodyAsJson = JSON.parse(body);
+        try {
+            var bodyAsJson = JSON.parse(body);
+        } catch (e) {
+            return console.error(e);
+        }
+
         var response = Object.assign({
           readable_time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z"),
           time : Date.now(),
