@@ -15,6 +15,18 @@ I.click('Forgot password');
 I.see('Reset password');
 });
 
+Scenario('Forgot password feature-incorrect email id entered', (I) => {
+    I.amOnPage('http://localhost:3000/');
+I.see('You must login to use the system');
+I.click('Sign in');
+I.click('Forgot password');
+I.see('Reset password');
+I.fillField('Email', 'akga@test.com');
+I.click('Reset password');
+I.see('You must login to use the system');
+});
+
+
 Scenario('Create new account-user already exists', (I) => {
     I.amOnPage('http://localhost:3000/');
 I.see('You must login to use the system');
@@ -61,7 +73,7 @@ Scenario('Place trade', (I) => {
 I.fillField('Password', '123456');
  I.click('#login-buttons-password');
 I.seeElement('#placeOrder');
-I.click('Place Order');
+I.click('#placeOrder');
 I.see('Parent Trade ID Quantity Side Average Price Execution Status Time');
 });
 
@@ -74,7 +86,7 @@ I.click('Sign in');
 I.see('Email');
 I.see('Password');
 I.click('Create account');
-I.fillField('Email', 'rdvvpem1@test.com');
+I.fillField('Email', '6ggg799hh@test.com');
 I.fillField('Password', '1234567');
 I.click('#login-buttons-password');
 I.seeElement('#placeOrder');
@@ -83,7 +95,14 @@ I.seeElement('#placeOrder');
 
 Scenario('Logout from the system', (I) => {
     I.amOnPage('http://localhost:3000/');
+I.see('You must login to use the system');
+I.see('Sign in');
+I.click('Sign in');
+I.see('Email');
+I.see('Password');
+I.click('Create account');
+I.fillField('Email', 'aka@test.com');
+I.fillField('Password', '123456');
 I.click('#login-buttons');
-I.click('#login-buttons-logout');
 I.see('You must login to use the system');
 });
