@@ -3,6 +3,6 @@ python server.py
 run ts with:
 node main.js 8081  http://localhost:8080 mongodb://[{ts username}]:[{ts password}]@[{account}].mlab.com:57476/dev
 then to demo run this:
-http://localhost:8081/?id=4&qty=500&side=sell&price=100&interval=*/1%20*%20*%20*%20*%20*&iters=4
+http://localhost:8081/?id=4&qty=500&side=sell&mode=twap
 
 *dont forget to npm install first if it is your first time running in the current dir.

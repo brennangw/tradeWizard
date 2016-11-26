@@ -41,7 +41,7 @@ var Server = function (db, exchange) {
         } else {
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
             res.writeHead(400, {'Content-Type': 'text/plain'});
-            res.end('Your parms are bad!\n');
+            res.end('Your params are bad!\n');
             return;
         }
 
