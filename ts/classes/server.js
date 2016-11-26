@@ -19,9 +19,8 @@ var Server = function (db, exchange) {
     this.router.get('/', function (req, res) {
         var query = querystring.parse(url.parse(req.url).query);
         var pt = new TwapParentTrade(
-            ptIdSetter, query["id"], query["qty"], query["side"], exchange, db
+            ptIdSetter, query["id"], parseInt(query["qty"]), query["side"], exchange, db
         );
-        pt.start();
         ptIdSetter++;
         db.currentPid.update({}, { $inc: { pid: 1 } }, function (err) {
             if (err) {

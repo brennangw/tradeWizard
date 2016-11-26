@@ -1,10 +1,11 @@
 var http = require('http');
 var cron = require('node-cron');
+var request = require("request");
 var ChildTrade = require('./childTrade.js');
 
 
 var TwapParentTrade =
-    function (id, eqId, qty, side, exchange, db, currentTime) {
+    function (id, eqId, qty, side, exchange, db) {
         //direct parameter assignment
         this.id = id;
         this.equityId = eqId;
@@ -14,57 +15,59 @@ var TwapParentTrade =
         this.db = db;
 
         //other assignment based on parameters
-        this.qtyLeft = this.qty;
+        this.qtyLeft = parseInt(this.qty);
         this.price = "0";
         if (this.side == "buy") {
             this.price = "2147483647"; //max 32 bit int
         }
 
         //other assignments
-        this.endTime = Date("2016-10-28 00:30:00"); //in ms
         this.totalIntervals = 10;
         this.intervalsSoFar = 0;
-        this.childTrades = [];
 
         var that = this;
-        request((this.location + '/query?id=1'), function (err, res, body) {
+        request((that.exchange.location + '/query?id=1'), function (err, res, body) {
             try {
                 var bodyAsJson = JSON.parse(body);
             } catch (e) {
+                console.log(body);
                 return console.error(e);
             }
-            var currentTime = Date(bodyAsJson.timestamp); //in ms
-            this.intervalLength = Math.floor((that.endTime -
+            var currentTime = (new Date(bodyAsJson.timestamp)).getTime(); //in ms
+            //08:30:00 for production
+            var endTime = (new Date("2016-10-28 00:30:30")).getTime();
+            that.intervalLength = Math.floor((endTime -
                 currentTime)/that.totalIntervals); //in ms
 
             //first trade
-            this.makeTrade();
+            that.makeTrade();
 
             //set up other trades
-            this.tradeTimer = setInterval(function(pt) {
-                if (pt.intervalsSoFar >= pt.intervals) {
+            var pt = that;
+            that.tradeTimer = setInterval(function() {
+                if (pt.intervalsSoFar >= pt.totalIntervals - 1) {
                     pt.stop();
                 }
                 pt.makeTrade();
-            }, that.intervalLength, that);
+            }, that.intervalLength);
         });
     };
 
     TwapParentTrade.prototype.intervalsRemaining = function () {
-        this.totalIntervals - this.intervalsSoFar;
+        return this.totalIntervals - this.intervalsSoFar;
     };
 
     TwapParentTrade.prototype.stop = function () {
         clearInterval(this.tradeTimer);
     };
 
-    TwapParentTrade.prototype = function () {
+    TwapParentTrade.prototype.makeTrade = function () {
         //flexible so if a trade doesn't work TWAP can still be used.
-        var qtyToTrade = Math.ceiling(that.qtyLeft/this.intervalsRemaining());
+        var qtyToTrade = Math.ceil(this.qtyLeft/this.intervalsRemaining());
         var currentChildTrade = new ChildTrade(this.intervalsSoFar,
-            qtyToTrade, that);
+            qtyToTrade, this, this.db);
         this.intervalsSoFar++;
         this.exchange.submitTrade(currentChildTrade, this.db);
-    }
+    };
 
-module.exports = ParentTrade;
+module.exports = TwapParentTrade;

@@ -14,7 +14,7 @@ var Database = function (db_url) {
             that.currentPid.save({pid: 1});
         }
     });
-}
+};
 
 
 module.exports = Database;

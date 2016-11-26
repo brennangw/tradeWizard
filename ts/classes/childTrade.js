@@ -1,12 +1,13 @@
 var moment = require('moment-timezone');
 
-var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
+var ChildTrade = function (id, childQty, parentTrade, db) {
     this.id = id;
-    this.equityId = equityId;
-    this.side = side;
-    this.qty = qty;
-    this.price = price;
-    this.parentTradeId = parentTradeId;
+    this.parent = parentTrade;
+    this.equityId = parentTrade.equityId;
+    this.side = parentTrade.side;
+    this.qty = childQty;
+    this.price = parentTrade.price;
+    this.parentTradeId = parentTrade.id;
     this.db = db;
     //todo: may not need to do the that = this
     var that = this;
@@ -27,6 +28,9 @@ var ChildTrade = function (id, equityId, side, qty, price, parentTradeId, db) {
           status : ((bodyAsJson.qty === 0) ? "FAILURE" : "SUCCESS"), //todo: remove this tmp fix for UI
           childTrade : that.id
         }, bodyAsJson);
+        if (response.status === "SUCCESS") {
+            that.parent.qtyLeft -= that.qty;
+        }
         that.db.replies.save(response, function(err, doc) {
             if (err) {
                 console.log("replies save callback error");
