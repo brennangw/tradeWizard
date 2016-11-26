@@ -1,4 +1,5 @@
 const ParentTrade = require('./parentTrade.js');
+const TwapParentTrade = require('./twapParentTrade.js');
 const http = require('http');
 const querystring = require('querystring');
 const Router = require('router');
@@ -17,9 +18,8 @@ var Server = function (db, exchange) {
     });
     this.router.get('/', function (req, res) {
         var query = querystring.parse(url.parse(req.url).query);
-        var pt = new ParentTrade(
-            ptIdSetter, query["id"], query["qty"], query["side"], query["price"],
-            query["iters"], query["interval"], exchange, db
+        var pt = new TwapParentTrade(
+            ptIdSetter, query["id"], query["qty"], query["side"], exchange, db
         );
         pt.start();
         ptIdSetter++;
