@@ -1,7 +1,5 @@
-var http = require('http');
-var cron = require('node-cron');
 var request = require("request");
-var ChildTrade = require('./childTrade.js');
+var TwapChildTrade = require('./twapChildTrade.js');
 
 
 var TwapParentTrade =
@@ -64,7 +62,7 @@ var TwapParentTrade =
     TwapParentTrade.prototype.makeTrade = function () {
         //flexible so if a trade doesn't work TWAP can still be used.
         var qtyToTrade = Math.ceil(this.qtyLeft/this.intervalsRemaining());
-        var currentChildTrade = new ChildTrade(this.intervalsSoFar,
+        var currentChildTrade = new TwapChildTrade(this.intervalsSoFar,
             qtyToTrade, this, this.db);
         this.intervalsSoFar++;
         this.exchange.submitTrade(currentChildTrade, this.db);

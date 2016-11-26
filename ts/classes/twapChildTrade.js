@@ -1,6 +1,6 @@
 var moment = require('moment-timezone');
 
-var ChildTrade = function (id, childQty, parentTrade, db) {
+var TwapChildTrade = function (id, childQty, parentTrade, db) {
     this.id = id;
     this.parent = parentTrade;
     this.equityId = parentTrade.equityId;
@@ -43,7 +43,7 @@ var ChildTrade = function (id, childQty, parentTrade, db) {
 };
 
 
-ChildTrade.prototype.beforeSending = function () {
+TwapChildTrade.prototype.beforeSending = function () {
     var toSave = {
         parentTradeId : this.parentTradeId,
         childTradeId : this.id,
@@ -62,7 +62,7 @@ ChildTrade.prototype.beforeSending = function () {
     });
 };
 
-ChildTrade.prototype.toQuery = function () {
+TwapChildTrade.prototype.toQuery = function () {
     function objToParams (obj) {
         var params = "";
         for (var k in obj) {
@@ -83,4 +83,4 @@ ChildTrade.prototype.toQuery = function () {
     side : this.side });
 };
 
-module.exports = ChildTrade;
+module.exports = TwapChildTrade;

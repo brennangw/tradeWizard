@@ -1,4 +1,3 @@
-const ParentTrade = require('./parentTrade.js');
 const TwapParentTrade = require('./twapParentTrade.js');
 const http = require('http');
 const querystring = require('querystring');
@@ -18,9 +17,19 @@ var Server = function (db, exchange) {
     });
     this.router.get('/', function (req, res) {
         var query = querystring.parse(url.parse(req.url).query);
-        var pt = new TwapParentTrade(
-            ptIdSetter, query["id"], parseInt(query["qty"]), query["side"], exchange, db
-        );
+        var pt = null;
+        if (query["mode"] === "twap") {
+            pt = new TwapParentTrade(
+                ptIdSetter, query["id"], parseInt(query["qty"]),
+                query["side"], exchange, db
+            );
+        } else {
+            pt = new TwapParentTrade(
+                ptIdSetter, query["id"], parseInt(query["qty"]),
+                query["side"], exchange, db
+            );
+        }
+
         ptIdSetter++;
         db.currentPid.update({}, { $inc: { pid: 1 } }, function (err) {
             if (err) {
