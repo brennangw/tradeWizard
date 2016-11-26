@@ -1,4 +1,5 @@
 const TwapParentTrade = require('./twapParentTrade.js');
+const ImmediateParentTrade = require('./immediateParentTrade.js');
 const http = require('http');
 const querystring = require('querystring');
 const Router = require('router');
@@ -16,18 +17,32 @@ var Server = function (db, exchange) {
         ptIdSetter = doc.pid;
     });
     this.router.get('/', function (req, res) {
+        var pts = {};
         var query = querystring.parse(url.parse(req.url).query);
         var pt = null;
-        if (query["mode"] === "twap") {
+        var mode = query["mode"];
+        var response = null;
+        if (mode === "twap") {
             pt = new TwapParentTrade(
                 ptIdSetter, query["id"], parseInt(query["qty"]),
                 query["side"], exchange, db
             );
+            pts[ptIdSetter] = pt;
+            response = "Started TWAP Trade";
+        } else if (mode === "immediate") {
+            pt = new ImmediateParentTrade(
+                ptIdSetter, query["id"], parseInt(query["qty"]),
+                query["side"], exchange, db
+            );
+            pts[ptIdSetter] = pt;
+            response = "Started Immediate Trade";
+        } else if (mode === "stop") {
+            response = pts[query["pid"]].stop();
         } else {
-            pt = new TwapParentTrade(
-                ptIdSetter, query["id"], parseInt(query["qty"]),
-                query["side"], exchange, db
-            );
+            res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+            res.writeHead(400, {'Content-Type': 'text/plain'});
+            res.end('Your parms are bad!\n');
+            return;
         }
 
         ptIdSetter++;
@@ -38,7 +53,7 @@ var Server = function (db, exchange) {
         });
         res.setHeader('Content-Type', 'text/plain; charset=utf-8');
         res.writeHead(200, {'Content-Type': 'text/plain'});
-        res.end('Aye aye!\n');
+        res.end(response + '\n');
     });
 
     //make the server
