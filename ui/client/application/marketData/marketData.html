@@ -1,22 +1,8 @@
-<!--<template name="marketData">-->
-    <!--<div>-->
-        <!--<div>-->
-            <!--<h4>Top Ask</h4>-->
-            <!--<div>-->
-                <!--<span><h5>Price: </h5>-->
-                <!--<h5>{{data.top_ask.price}}</h5></span>-->
-                <!--<span><h5>Size: </h5>-->
-                <!--<h5>{{data.top_ask.size}}</h5></span>-->
-            <!--</div>-->
-        <!--</div>-->
-        <!--<div>-->
-            <!--<h4>Top Bid</h4>-->
-            <!--<div>-->
-                <!--<span><h5>Price: </h5>-->
-                <!--<h5>{{data.top_bid.price}}</h5></span>-->
-                <!--<span><h5>Size: </h5>-->
-                <!--<h5>{{data.top_bid.size}}</h5></span>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</template>-->
+<template name="marketData">
+    <div class="container">
+        <div class="row">
+            <span class="col-sm-12">Top Ask: Price {{data.top_ask.price}} Size {{data.top_ask.size}}</span>
+            <span class="col-sm-12">Top Bid: Price {{data.top_bid.price}} Size {{data.top_bid.size}}</span>
+        </div>
+    </div>
+</template>
