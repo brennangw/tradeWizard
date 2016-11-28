@@ -5,9 +5,12 @@ var request = require("request");
 
 const exchangeLocation = process.argv[2];
 const mongoLocation = process.argv[3];
+var ids = process.argv[4].split(",");
 var db = mongojs(mongoLocation);
 const pingStorage = db.collection('ping_storage');
-const ids = [1,2,3];
+
+var delay = (ids.length * 2 + 5).toString();
+
 
 const saveResponse = function(error, response, body) {
     pingStorage.save(JSON.parse(body), function(err,doc) {
@@ -18,7 +21,9 @@ const saveResponse = function(error, response, body) {
     });
 };
 
-var cronPing = cron.schedule('*/15 * * * * *', function () {
+var cronString = '*/'+delay+' * * * * *';
+
+var cronPing = cron.schedule(cronString, function () {
     var sleep = require('sleep');
     var index;
     for (index = 0; index < ids.length; index++) {

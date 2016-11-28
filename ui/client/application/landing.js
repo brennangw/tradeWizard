@@ -4,8 +4,8 @@
 Meteor.subscribe("replies");
 Template.landing.helpers({
     replies_function : function () {
-        console.log(Replies.findOne({}));
-        return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
+        // console.log(Replies.findOne({}));
+        // return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
 
     },
     // tradeWizard login screen.png

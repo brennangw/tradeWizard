@@ -1,5 +1,5 @@
 //Replies = new Mongo.Collection("replies");
-
+import { MarketData } from './collections/marketData.js';
 Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',

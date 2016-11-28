@@ -2,7 +2,6 @@ import { Meteor } from 'meteor/meteor';
 
 Replies = new Meteor.Collection("replies_from_the_exchange");
 Meteor.startup(function() {
-
     ReactiveTable.publish("replies", Replies);
     var PORT = 8081;
     Meteor.methods({
