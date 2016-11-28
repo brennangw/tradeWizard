@@ -1,8 +1,11 @@
 <template name="marketData">
     <div class="container">
         <div class="row">
-            <span class="col-sm-12">Top Ask: Price {{data.top_ask.price}} Size {{data.top_ask.size}}</span>
-            <span class="col-sm-12">Top Bid: Price {{data.top_bid.price}} Size {{data.top_bid.size}}</span>
+            <span class="col-sm-3 label label-primary"><h5>Top Ask: Price {{data.top_ask.price}} Size {{data.top_ask.size}}</h5></span>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-sm-3 label label-success"><h5>Top Bid: Price {{data.top_bid.price}} Size {{data.top_bid.size}}</h5></span>
         </div>
     </div>
 </template>

@@ -17,7 +17,7 @@ Template.landing.helpers({
     // tradeWizard login screen.png
     tableSettings : function () {
         return {
-            rowsPerPage: 10,
+            rowsPerPage: 7,
             showNavigation: 'auto',
             fields: [
                 { key: 'parentTradeId', label: 'Parent Trade ID'},
