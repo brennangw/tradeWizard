@@ -36,8 +36,17 @@ var Server = function (db, exchange) {
             );
             pts[ptIdSetter] = pt;
             response = "Started Immediate Trade";
+        } else if (mode === "twapToImmediate") {
+            var pt = pts[query["pid"]];
+            if (pt instanceof TwapParentTrade) {
+                response = pt.finishNow();
+            }
         } else if (mode === "stop") {
-            response = pts[query["pid"]].stop();
+            var pt = pts[query["pid"]];
+            if (pt instanceof TwapParentTrade ||
+                pt instanceof ImmediateParentTrade) {
+                response = pt.stop();
+            }
         } else {
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
             res.writeHead(400, {'Content-Type': 'text/plain'});

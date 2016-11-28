@@ -55,6 +55,16 @@ var TwapParentTrade =
         return this.totalIntervals - this.intervalsSoFar;
     };
 
+    TwapParentTrade.prototype.finishNow = function () {
+        //flexible so if a trade doesn't work TWAP can still be used.
+        var qtyToTrade = this.qtyLeft;
+        var currentChildTrade = new TwapChildTrade(this.intervalsSoFar,
+            qtyToTrade, this, this.db);
+        this.intervalsSoFar++;
+        this.exchange.submitTrade(currentChildTrade, this.db);
+        return "Finishing now";
+    };
+
     TwapParentTrade.prototype.stop = function () {
         clearInterval(this.tradeTimer);
         return "Stop an twop trade."
