@@ -7,13 +7,7 @@ Template.landing.helpers({
         console.log(Replies.findOne({}));
         return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
     },
-
-    modal_function : function () {
-        console.log(Replies.findOne({}));
-        return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
-
-    },
-    // tradeWizard login screen.png
+    
     tableSettings : function () {
         return {
             rowsPerPage: 7,
