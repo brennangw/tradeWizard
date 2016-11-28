@@ -8,6 +8,12 @@ Template.landing.helpers({
         // return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
 
     },
+
+    modal_function : function () {
+        console.log(Replies.findOne({}));
+        return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
+
+    },
     // tradeWizard login screen.png
     tableSettings : function () {
         return {
@@ -33,6 +39,16 @@ Template.landing.events({
     // 'submit form': function(event) {
     //     console.log("TEST")
     // }
+    'click .reactive-table tbody tr': function (event) {
+        // set the blog post we'll display details and news for
+        var post = this;
+        Session.set('post', post);
+        console.log(post.parentTradeId);
+
+        $('#parentTradeModal').modal('show');
+
+        //display the modal here based on the parent trade ID, list the filters
+    }
 });
 
 
@@ -61,7 +77,9 @@ Template.createOrderForm.events({
         console.log(account);
         console.log(side);
 
-
+        if (strategy== "Time-Weighted Average Price (TWAP)") {
+            strategy='twap'
+        }
         //Call the request to the endpoint here
 
         Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function(error, results) {

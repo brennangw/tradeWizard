@@ -19,9 +19,7 @@ Meteor.startup(function() {
                 "/?id=3&" +
                 "qty=" + orderQty +
                 "&side=" + side +
-                "&price=100" +
-                "&interval=*/1%20*%20*%20*%20*%20*" +
-                "&iters=4";
+                "&mode=" + tradeStrategy;
             var request = Meteor.http.call("GET", request_string);
             console.log(request_string);
             console.log(request);

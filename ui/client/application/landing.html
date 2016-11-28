@@ -1,5 +1,7 @@
 <template name="landing">
     <!--Container to align modal button-->
+    {{> parentTradeModalTemplate}}
+
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -19,14 +21,13 @@
         </div>
     </div>
 
-
     <!--{{> createOrderForm}}-->
     <br>
     {{> marketData }}
     <div class="table-responsive">
         <table class="table">
             <div class="tradeTable">
-                {{>reactiveTable collection="replies" settings=tableSettings }}
+                {{>reactiveTable collection="replies" settings=tableSettings}}
             </div>
         </table>
         <div class="tradeTable">
@@ -51,6 +52,41 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+</template>
+
+<template name="parentTradeModalTemplate">
+    <div class="modal fade" id="parentTradeModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Trade Information</h4>
+                </div>
+
+                <div class="modal-body">
+                    <label for="name">Table of parent trade ids</label>
+                    <div class="tradeTableOnModal">
+                        {{>reactiveTable collection="replies" settings=tableSettings}}
+                    </div>
+                    <div class="tradeTableOnModal">
+                        <tr>
+                            <td>
+                                {{#each modal_function}}
+                                    {{> reply}}
+                                {{/each}}
+                            </td>
+                        </tr>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-primary" id="save">Save</button>-->
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
