@@ -87,8 +87,10 @@ var TwapParentTrade =
     TwapParentTrade.prototype.makeTrade = function () {
         //flexible so if a trade doesn't work TWAP can still be used.
         var qtyToTrade = Math.ceil(this.qtyLeft/this.intervalsRemaining());
+        console.log(qtyToTrade);
         var currentChildTrade = new TwapChildTrade(this.intervalsSoFar,
             qtyToTrade, this, this.db);
+        console.log(currentChildTrade);
         this.intervalsSoFar++;
         this.exchange.submitTrade(currentChildTrade, this.db);
     };
