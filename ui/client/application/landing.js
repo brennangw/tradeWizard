@@ -30,6 +30,12 @@ Template.landing.events({
     }
 });
 
+Template.createOrderForm.helpers({
+    tooltip: function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    }
+});
+
 Template.createOrderForm.events({
     'submit .submitOrderForm': function(event) {
         event.preventDefault();

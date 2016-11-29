@@ -28,11 +28,15 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="strategy" class="col-sm-2 col-form-label" required>Trading Strategy:</label>
+                <label for="strategy" class="col-sm-2 col-form-label" data-toggle="tooltip" data-placement="top" title="
+Immediate Sale: Execute trade order immediately
+
+TWAP: Execute trade order in partitions over span of day
+                " required><a href="#">Trading Strategy:</a></label>
                 <div class="col-sm-4">
                     <select class="form-control" id="strategy">
-                        <option>Immediate Sale</option>
                         <option>Time-Weighted Average Price (TWAP)</option>
+                        <option>Immediate Sale</option>
                     </select>
                 </div>
             </div>
