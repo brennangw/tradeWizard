@@ -9,18 +9,9 @@
 
                 <div class="modal-body">
                     <!--<label for="name"><h4>Associated Child Trades</h4></label>-->
-                    <div class="tradeTableOnModal">
-                        {{>reactiveTable collection="replies" settings=parentTableSettings}}
-                    </div>
-                    <div class="tradeTableOnModal">
-                        <tr>
-                            <td>
-                                {{#each modal_function}}
-                                    {{> reply}}
-                                {{/each}}
-                            </td>
-                        </tr>
-                    </div>
+                    <section class="replies">
+                        {{> childDataTable}}
+                    </section>
                 </div>
 
                 <div class="modal-footer">
