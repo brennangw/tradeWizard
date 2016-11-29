@@ -21,10 +21,14 @@ Template.landing.events({
         console.log(post.parentTradeId);
 
         $('#parentTradeModal').modal('show');
+
+        var pid = post.parentTradeId;
+
+        Meteor.call("passParentId", pid, function(error, results) {
+            console.log("Sent the selected PID");
+        });
     }
 });
-
-
 
 Template.createOrderForm.events({
     'submit .submitOrderForm': function(event) {
@@ -50,7 +54,7 @@ Template.createOrderForm.events({
         console.log(account);
         console.log(side);
 
-        if (strategy== "Time-Weighted Average Price (TWAP)") {
+        if (strategy == "Time-Weighted Average Price (TWAP)") {
             strategy='twap'
         }
         //Call the request to the endpoint here

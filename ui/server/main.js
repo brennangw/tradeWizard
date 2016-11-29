@@ -2,6 +2,8 @@ import { Meteor } from 'meteor/meteor';
 
 // Replies = new Meteor.Collection("replies_from_the_exchange");
 
+var globalParentId;
+
 Meteor.startup(function() {
 
     // ReactiveTable.publish("replies", Replies);
@@ -12,6 +14,56 @@ Meteor.startup(function() {
 
     var PORT = 8081;
     Meteor.methods({
+        passParentId: function(parentId) {
+          this.unblock();
+          globalParentId = parentId;
+        },
+
+        getParentId: function() {
+            this.unblock();
+            return globalParentId;
+        },
+
+        stopOrder: function(parentId) {
+            this.unblock();
+            console.log("Stopping order: ");
+            console.log(parentId);
+
+            try {
+                request_string = "http://localhost:" + PORT +
+                    "/?pid=" + parentId +
+                    "&" +
+                    "qty=null";
+                var request = Meteor.http.call("GET", request_string);
+                console.log(request_string);
+                console.log(request);
+            }
+            catch(err){
+                console.log(err.message);
+            }
+        },
+
+        changeOrderType: function(parentId, mode) {
+            this.unblock();
+            console.log("Stopping order: ");
+            console.log(parentId);
+
+            mode = "twapToImmediate";
+
+            try {
+                request_string = "http://localhost:" + PORT +
+                    "/?pid=" + parentId +
+                    "&" +
+                    "mode=" + mode;
+                var request = Meteor.http.call("GET", request_string);
+                console.log(request_string);
+                console.log(request);
+            }
+            catch(err){
+                console.log(err.message);
+            }
+        },
+
         sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber) {
             this.unblock();
             console.log("Sending request to node server. Parameters:");
