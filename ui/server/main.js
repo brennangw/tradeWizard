@@ -24,7 +24,7 @@ Meteor.startup(function() {
             return globalParentId;
         },
 
-        stopOrder: function(parentId) {
+        stopOrder: function(parentId, mode) {
             this.unblock();
             console.log("Stopping order: ");
             console.log(parentId);
@@ -33,7 +33,7 @@ Meteor.startup(function() {
                 request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
-                    "qty=500";
+                    "mode=" + mode;
                 var request = Meteor.http.call("GET", request_string);
                 console.log(request_string);
                 console.log(request);

@@ -17,14 +17,14 @@ Template.landing.events({
     'click .parentTable tbody tr': function () {
         // set the blog post we'll display details and news for
         var post = this;
-        Session.set('post', post);
-        console.log(post.parentTradeId);
+        Session.set('post', post.pid);
+        console.log(post.pid);
 
         $('#parentTradeModal').modal('show');
 
-        var pid = post.parentTradeId;
+        var pid2 = post.pid;
 
-        Meteor.call("passParentId", pid, function() {
+        Meteor.call("passParentId", pid2, function() {
             console.log("Sent the selected PID");
         });
     }

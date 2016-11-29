@@ -6,7 +6,11 @@ import { Replies } from '../../../lib/collections/repliesCollection.js';
 
 Template.childDataTable.helpers({
     modal_function : function () {
-        return Replies.find({parentTradeId:111}).fetch();
+
+        var currentParentId = Session.get('post');
+        console.log(currentParentId);
+
+        return Replies.find({parentTradeId:currentParentId}).fetch();
     }
 });
 
@@ -16,6 +20,7 @@ Template.parentTradeModalTemplate.events({
         event.preventDefault();
 
         var currentParentId;
+        var mode = "stop";
 
         $('#parentTradeModal').modal('hide');
 
@@ -25,36 +30,13 @@ Template.parentTradeModalTemplate.events({
             console.log("Got the selected PID");
         });
 
-        Meteor.call("stopOrder", currentParentId, function(error, results) {
-            console.log(results);
+        Meteor.call("stopOrder", currentParentId, mode,  function(error, results) {
+            // console.log(results);
             console.log(currentParentId);
             console.log("Cancelled a trade request");
         });
 
-        // var target = event.target;
-        // var symbol = target.etf_symbol.value;
-        // var orderQty = target.orderQty.value;
-        // var strategy = target.strategy.value;
-        // var account = target.account.value;
-        // var side;
-        // console.log(target.sell_button.value);
-        //
-        // side = "sell";
-        // console.log(symbol);
-        // console.log(orderQty);
-        // console.log(strategy);
-        // console.log(account);
-        // console.log(side);
-        //
-        // if (strategy== "Time-Weighted Average Price (TWAP)") {
-        //     strategy='twap'
-        // }
-        // //Call the request to the endpoint here
-        //
-        // Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function(error, results) {
-        //     // console.log(results.content); //results.data should be a JSON object
-        //     console.log("Sent a trade request");
-        // });
+        //display popover on success
 
     }
 

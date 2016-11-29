@@ -2,10 +2,14 @@
  * Created by ishanguru on 11/28/16.
  */
 
-import { Replies } from '../../lib/collections/repliesCollection.js';
+import { RepliesAggregate } from '../../lib/collections/repliesCollection.js';
 
 Template.parentDataTable.helpers({
     replies_function : function () {
-        return Replies.find({parentTradeId:111}).fetch();
+        var allValues = RepliesAggregate.find({}).fetch();
+        // var distinctArray = _.uniq(allValues, false, function(d) {return d.foo});
+        // var distinctValues = _.pluck(distinctArray, 'foo');
+        console.log(allValues);
+        return allValues;
     }
 });
