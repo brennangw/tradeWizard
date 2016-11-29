@@ -14,6 +14,7 @@
             </div>
         </div>
     </div>
+
     <!-- Modal -->
     <div id="createOrderModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -21,23 +22,16 @@
         </div>
     </div>
 
-    <!--{{> createOrderForm}}-->
     <br>
     <div class="table-responsive">
-        <table class="table">
-            <div class="tradeTable">
-                {{>reactiveTable collection="replies" settings=tableSettings}}
-            </div>
-        </table>
-        <div class="tradeTable">
-            <tr>
-                <td>
-            {{#each replies_function}}
-                {{> reply}}
-            {{/each}}
-                </td>
-            </tr>
-        </div>
+        <!--<table class="table">-->
+            <!--<div class="tradeTable">-->
+                <!--{{>reactiveTable collection=replies_function settings=tableSettings}}-->
+            <!--</div>-->
+        <!--</table>-->
+        <section class="replies">
+            {{> parentDataTable}}
+        </section>
     </div>
     {{> marketData }}
 </template>

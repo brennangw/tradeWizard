@@ -1,37 +1,19 @@
+import { Replies } from '../../lib/collections/repliesCollection.js';
 
 //Landing page helper functions
 
-Meteor.subscribe("replies");
+// Template.landing.onCreated( function () {
+//     var self = this;
+//     self.autorun(function () {
+//         self.subscribe('replies');
+//     });
+// });
+
 Template.landing.helpers({
-    replies_function : function () {
-        console.log(Replies.findOne({}));
-        return (Replies.find({}, {limit: 1, sort:{timestamp:-1}}).fetch());
-    },
-    
-    tableSettings : function () {
-        return {
-            rowsPerPage: 7,
-            showNavigation: 'auto',
-            fields: [
-                { key: 'parentTradeId', label: 'Parent Trade ID'},
-                { key: 'qty', label: 'Quantity' },
-                { key: 'side', label: 'Side' },
-                { key: 'avg_price', label: 'Average Price' },
-                { key: 'status', label: 'Execution Status' },
-                { key: 'readable_time', label: 'Time', hidden: false},
-                { key: 'time', label: 'Time', sortDirection: 'descending', sortOrder: 0, hidden: true}
-            ],
-            showFilter: false,
-            useFontAwesome: true
-        };
-    }
 
 });
 
 Template.landing.events({
-    // 'submit form': function(event) {
-    //     console.log("TEST")
-    // }
     'click .reactive-table tbody tr': function (event) {
         // set the blog post we'll display details and news for
         var post = this;
@@ -39,8 +21,6 @@ Template.landing.events({
         console.log(post.parentTradeId);
 
         $('#parentTradeModal').modal('show');
-
-        //display the modal here based on the parent trade ID, list the filters
     }
 });
 

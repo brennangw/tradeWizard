@@ -1,8 +1,15 @@
 import { Meteor } from 'meteor/meteor';
 
-Replies = new Meteor.Collection("replies_from_the_exchange");
+// Replies = new Meteor.Collection("replies_from_the_exchange");
+
 Meteor.startup(function() {
-    ReactiveTable.publish("replies", Replies);
+
+    // ReactiveTable.publish("replies", Replies);
+
+    // Meteor.publish('replies', function () {
+    //     return Replies.find();
+    // });
+
     var PORT = 8081;
     Meteor.methods({
         sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber) {

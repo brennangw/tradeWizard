@@ -1,0 +1,23 @@
+<template name="parentDataTable">
+    <table class="table table-striped table-hover" align="center">
+        <thead class="thead-inverse">
+            <th><h4>Parent Trade Id</h4></th>
+            <th><h4>Quantity</h4></th>
+            <th><h4>Side</h4></th>
+            <th><h4>Average Price</h4></th>
+            <th><h4>Execution Status</h4></th>
+            <th><h4>Time</h4></th>
+        </thead>
+        <tbody>
+            {{#if Template.subscriptionsReady}}
+                {{#each replies_function}}
+                    <tr>
+                        {{> Reply}}
+                    </tr>
+                {{/each}}
+            {{else}}
+                <p>Loading</p>
+            {{/if}}
+        </tbody>
+    </table>
+</template>

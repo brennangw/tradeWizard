@@ -1,4 +1,5 @@
 import { Mongo } from 'meteor/mongo';
+
 export const MarketData = new Mongo.Collection("ping_storage");
 
 if (Meteor.isServer) {
