@@ -25,6 +25,12 @@ Template.parentTradeModalTemplate.events({
             console.log("Got the selected PID");
         });
 
+        Meteor.call("stopOrder", currentParentId, function(error, results) {
+            console.log(results);
+            console.log(currentParentId);
+            console.log("Cancelled a trade request");
+        });
+
         // var target = event.target;
         // var symbol = target.etf_symbol.value;
         // var orderQty = target.orderQty.value;

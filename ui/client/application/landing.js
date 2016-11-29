@@ -1,4 +1,4 @@
-import { Replies } from '../../lib/collections/repliesCollection.js';
+// import { Replies } from '../../lib/collections/repliesCollection.js';
 
 //Landing page helper functions
 
@@ -14,7 +14,7 @@ Template.landing.helpers({
 });
 
 Template.landing.events({
-    'click .parentTable tbody tr': function (event) {
+    'click .parentTable tbody tr': function () {
         // set the blog post we'll display details and news for
         var post = this;
         Session.set('post', post);
@@ -24,7 +24,7 @@ Template.landing.events({
 
         var pid = post.parentTradeId;
 
-        Meteor.call("passParentId", pid, function(error, results) {
+        Meteor.call("passParentId", pid, function() {
             console.log("Sent the selected PID");
         });
     }
@@ -55,11 +55,14 @@ Template.createOrderForm.events({
         console.log(side);
 
         if (strategy == "Time-Weighted Average Price (TWAP)") {
-            strategy='twap'
+            strategy='twap';
+        }
+        if (strategy == "Immediate Sale") {
+            strategy='immediate';
         }
         //Call the request to the endpoint here
 
-        Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function(error, results) {
+        Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function() {
             // console.log(results.content); //results.data should be a JSON object
             console.log("Sent a trade request");
         });

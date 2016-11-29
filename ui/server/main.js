@@ -33,7 +33,7 @@ Meteor.startup(function() {
                 request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
-                    "qty=null";
+                    "qty=500";
                 var request = Meteor.http.call("GET", request_string);
                 console.log(request_string);
                 console.log(request);
