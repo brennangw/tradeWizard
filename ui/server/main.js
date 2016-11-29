@@ -41,6 +41,7 @@ Meteor.startup(function() {
             catch(err){
                 console.log(err.message);
             }
+            console.log("Made it to the end of the call");
         },
 
         changeOrderType: function(parentId, mode) {

@@ -19,16 +19,17 @@ Template.parentTradeModalTemplate.events({
     'click #cancelOrder': function (event) {
         event.preventDefault();
 
-        var currentParentId;
+        var currentParentId = Session.get('post');
         var mode = "stop";
 
         $('#parentTradeModal').modal('hide');
 
         Meteor.call("getParentId", function(error, results) {
             currentParentId = results;
-            console.log(currentParentId);
-            console.log("Got the selected PID");
+            // console.log(currentParentId);
+            // console.log("Got the selected PID");
         });
+        console.log(currentParentId);
 
         Meteor.call("stopOrder", currentParentId, mode,  function(error, results) {
             // console.log(results);
