@@ -67,7 +67,7 @@ var TwapParentTrade =
 
     TwapParentTrade.prototype.stop = function () {
         clearInterval(this.tradeTimer);
-        return "Stop an twop trade."
+        return "Stop an twap trade."
     };
 
     TwapParentTrade.prototype.makeTrade = function () {
