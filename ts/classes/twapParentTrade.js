@@ -1,14 +1,14 @@
 var request = require("request");
 var TwapChildTrade = require('./twapChildTrade.js');
-
+var moment = require('moment-timezone');
 
 var TwapParentTrade =
     function (id, eqId, qty, side, exchange, db) {
         //direct parameter assignment
-        this.id = id;
-        this.equityId = eqId;
-        this.side = side;
-        this.qty = qty;
+        this.id = id;  //save
+        this.equityId = eqId; //save
+        this.side = side; //save
+        this.qty = qty; //save
         this.exchange = exchange;
         this.db = db;
 
@@ -36,7 +36,21 @@ var TwapParentTrade =
             var endTime = (new Date("2016-10-28 00:30:30")).getTime();
             that.intervalLength = Math.floor((endTime -
                 currentTime)/that.totalIntervals); //in ms
+            var toSave = {
+                pid : that.id,
+                equityId : that.equityId,
+                side : that.side,
+                qty : that.qty,
+                time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z")
+            };
 
+            that.db.parents.save (toSave, function (err, doc) {
+                if (err) {
+                    console.log("parent not saved");
+                    console.log(err);
+                    console.log(doc);
+                }
+            });
             //first trade
             that.makeTrade();
 

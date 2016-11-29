@@ -7,6 +7,7 @@ var Database = function (db_url) {
     this.mongoConnection = mongojs(db_url);
     this.replies = this.mongoConnection.collection('replies_from_the_exchange');
     this.sent = this.mongoConnection.collection('trades_sent_to_exchange');
+    this.parents = this.mongoConnection.collection('parents');
     this.currentPid = this.mongoConnection.collection('pid');
     var that = this;
     this.currentPid.findOne({}, function(err, doc) {
