@@ -5,7 +5,6 @@
 import { Replies } from '../../lib/collections/repliesCollection.js';
 
 Template.parentDataTable.helpers({
-
     replies_function : function () {
         return Replies.find({parentTradeId:111}).fetch();
     }
