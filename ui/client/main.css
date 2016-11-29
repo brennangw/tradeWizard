@@ -1,7 +1,7 @@
 /* CSS declarations go here */
 
-.tradeTable {
-    padding-left: 3%;
-    padding-right: 3%;
+.parentTable {
+    padding-left: 10%;
+    padding-right: 10%;
     /*width: 151%;*/
 }

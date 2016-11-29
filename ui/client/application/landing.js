@@ -14,7 +14,7 @@ Template.landing.helpers({
 });
 
 Template.landing.events({
-    'click .reactive-table tbody tr': function (event) {
+    'click .parentTable tbody tr': function (event) {
         // set the blog post we'll display details and news for
         var post = this;
         Session.set('post', post);
