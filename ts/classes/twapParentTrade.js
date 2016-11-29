@@ -33,9 +33,11 @@ var TwapParentTrade =
             }
             var currentTime = (new Date(bodyAsJson.timestamp)).getTime(); //in ms
             //08:30:00 for production
-            var endTime = (new Date("2016-10-28 00:30:30")).getTime();
+            var endTime = (new Date("2016-10-28 08:30:00")).getTime();
             that.intervalLength = Math.floor((endTime -
                 currentTime)/that.totalIntervals); //in ms
+            //for demo
+            that.intervalLength = 3000;
             var toSave = {
                 pid : that.id,
                 equityId : that.equityId,
