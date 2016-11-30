@@ -34,32 +34,7 @@ Template.landing.events({
         console.log("Show blotter clicked");
 
         Session.set("blotterBoolean", true);
-
-        // TODO Here we should :
-        //         Hide the parentDataTable
-        //         Show the unfiltered table
-        //         Hide the showBlotter button
-        //         Show the hideBlotter button
-
-        // style="display: none;" -> this attribute hides the button
-
-        // $('#parentTradeModal').modal('hide');
-        //
-        // Meteor.call("getParentId", function(error, results) {
-        //     currentParentId = results;
-        //     // console.log(currentParentId);
-        //     // console.log("Got the selected PID");
-        // });
-        // console.log(currentParentId);
-        //
-        // Meteor.call("stopOrder", currentParentId, mode,  function(error, results) {
-        //     // console.log(results);
-        //     console.log(currentParentId);
-        //     console.log("Cancelled a trade request");
-        // });
-
-        //display popover on success
-
+        
     },
 
     'click #hideBlotter': function (event) {
