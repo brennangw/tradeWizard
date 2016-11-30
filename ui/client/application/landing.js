@@ -14,7 +14,7 @@ Template.landing.helpers({
 
 Template.landing.events({
     'click .parentTable tbody tr': function () {
-        // set the blog post we'll display details and news for
+
         var post = this;
         Session.set('post', post.pid);
         console.log(post.pid);
@@ -34,7 +34,7 @@ Template.landing.events({
         console.log("Show blotter clicked");
 
         Session.set("blotterBoolean", true);
-        
+
     },
 
     'click #hideBlotter': function (event) {
@@ -57,9 +57,6 @@ Template.createOrderForm.helpers({
 Template.createOrderForm.events({
     'submit .submitOrderForm': function(event) {
         event.preventDefault();
-
-        // console.log(event.type);
-        // console.log("Form submitted");
 
         $('#createOrderModal').modal('hide');
 
@@ -84,10 +81,8 @@ Template.createOrderForm.events({
         if (strategy == "Immediate Sale") {
             strategy='immediate';
         }
-        //Call the request to the endpoint here
 
         Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function() {
-            // console.log(results.content); //results.data should be a JSON object
             console.log("Sent a trade request");
         });
 
