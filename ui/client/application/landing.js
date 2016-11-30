@@ -1,7 +1,15 @@
 //Landing page helper functions
 
-Template.landing.helpers({
+Template.landing.onCreated(function() {
+    // this.subscribe("marketData");
+    console.log("Landing created");
+    Session.set("blotterBoolean", false);
+});
 
+Template.landing.helpers({
+    blotterShown: function () {
+        return !Session.get("blotterBoolean");
+    }
 });
 
 Template.landing.events({
@@ -24,6 +32,8 @@ Template.landing.events({
         event.preventDefault();
 
         console.log("Show blotter clicked");
+
+        Session.set("blotterBoolean", true);
 
         // TODO Here we should :
         //         Hide the parentDataTable
@@ -49,6 +59,15 @@ Template.landing.events({
         // });
 
         //display popover on success
+
+    },
+
+    'click #hideBlotter': function (event) {
+        event.preventDefault();
+
+        console.log("Hide blotter clicked");
+
+        Session.set("blotterBoolean", false);
 
     }
 
