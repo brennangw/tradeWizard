@@ -24,12 +24,15 @@
 
     <br>
     <div class="table-responsive">
-        <section class="replies" id="parentDataTable">
-            {{> parentDataTable}}
-        </section>
-        <section class="replies" id="blotterDataTable">
-            {{> blotterDataTable}}
-        </section>
+            {{#if blotterShown}}
+                <section class="replies" id="parentDataTable">
+                    {{> parentDataTable}}
+                </section>
+            {{else}}
+                <section class="replies" id="blotterDataTable">
+                    {{> blotterDataTable}}
+                </section>
+            {{/if}}
     </div>
     {{> marketData }}
     <br>
