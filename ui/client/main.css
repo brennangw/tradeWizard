@@ -3,9 +3,13 @@
 .parentTable {
     padding-left: 4%;
     padding-right: 4%;
-    /*width: 151%;*/
 }
+
+.blotterTable {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
 .newClass {
     text-align: right;
-    /*width: 151%;*/
 }

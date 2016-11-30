@@ -1,0 +1,32 @@
+<template name="blotterDataTable">
+    <div class="">
+        <table class="table table-striped table-hover blotterTable" align="center">
+            <thead class="thead-inverse">
+            <th>PID</th>
+            <th>CID</th>
+            <th>Qty</th>
+            <th>Side</th>
+            <th>Average Price</th>
+            <th>Status</th>
+            <th>Time</th>
+            </thead>
+            <tbody>
+            {{#if Template.subscriptionsReady}}
+                {{#each blotter_function}}
+                    <tr>
+                        {{> blotterReply}}
+                    </tr>
+                {{/each}}
+            {{else}}
+                <p>Loading</p>
+            {{/if}}
+            </tbody>
+            <!--<div class="newClass" align="right">-->
+            <!--<ul class="pager" >-->
+            <!--<li><a href="#">Previous</a></li>-->
+            <!--<li><a href="#">Next</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+        </table>
+    </div>
+</template>
