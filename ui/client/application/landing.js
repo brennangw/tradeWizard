@@ -1,13 +1,4 @@
-// import { Replies } from '../../lib/collections/repliesCollection.js';
-
 //Landing page helper functions
-
-// Template.landing.onCreated( function () {
-//     var self = this;
-//     self.autorun(function () {
-//         self.subscribe('replies');
-//     });
-// });
 
 Template.landing.helpers({
 
@@ -27,7 +18,40 @@ Template.landing.events({
         Meteor.call("passParentId", pid2, function() {
             console.log("Sent the selected PID");
         });
+    },
+
+    'click #showBlotter': function (event) {
+        event.preventDefault();
+
+        console.log("Show blotter clicked");
+
+        // TODO Here we should :
+        //         Hide the parentDataTable
+        //         Show the unfiltered table
+        //         Hide the showBlotter button
+        //         Show the hideBlotter button
+
+        // style="display: none;" -> this attribute hides the button
+
+        // $('#parentTradeModal').modal('hide');
+        //
+        // Meteor.call("getParentId", function(error, results) {
+        //     currentParentId = results;
+        //     // console.log(currentParentId);
+        //     // console.log("Got the selected PID");
+        // });
+        // console.log(currentParentId);
+        //
+        // Meteor.call("stopOrder", currentParentId, mode,  function(error, results) {
+        //     // console.log(results);
+        //     console.log(currentParentId);
+        //     console.log("Cancelled a trade request");
+        // });
+
+        //display popover on success
+
     }
+
 });
 
 Template.createOrderForm.helpers({
