@@ -6,6 +6,7 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
     this.equityId = parentTrade.equityId;
     this.side = parentTrade.side;
     this.qty = childQty;
+    this.uid = parentTrade.uid;
     this.price = parentTrade.price;
     this.parentTradeId = parentTrade.id;
     this.db = db;
@@ -25,6 +26,7 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
           readable_time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z"),
           time : Date.now(),
           parentTradeId : that.parentTradeId,
+          uid : that.uid,
           status : ((bodyAsJson.qty === 0) ? "FAILURE" : "SUCCESS"), //todo: remove this tmp fix for UI
           childTrade : that.id
         }, bodyAsJson);
@@ -49,6 +51,7 @@ TwapChildTrade.prototype.beforeSending = function () {
         childTradeId : this.id,
         equityId : this.equityId,
         price : this.price,
+        uid : this.uid,
         qty : this.qty,
         side : this.side,
         dateSubmitted : Date.now()

@@ -3,9 +3,10 @@ var TwapChildTrade = require('./twapChildTrade.js');
 var moment = require('moment-timezone');
 
 var TwapParentTrade =
-    function (id, eqId, qty, side, exchange, db) {
+    function (id, uid, eqId, qty, side, exchange, db) {
         //direct parameter assignment
         this.id = id;  //save
+        this.uid = uid;
         this.equityId = eqId; //save
         this.side = side; //save
         this.qty = qty; //save
@@ -39,6 +40,7 @@ var TwapParentTrade =
             //for demo
             that.intervalLength = 3000;
             var toSave = {
+                uid : that.uid,
                 pid : that.id,
                 equityId : that.equityId,
                 side : that.side,

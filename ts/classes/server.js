@@ -24,14 +24,14 @@ var Server = function (db, exchange) {
         var response = null;
         if (mode === "twap") {
             pt = new TwapParentTrade(
-                ptIdSetter, query["id"], parseInt(query["qty"]),
+                ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
                 query["side"], exchange, db
             );
             pts[ptIdSetter] = pt;
             response = "Started TWAP Trade";
         } else if (mode === "immediate") {
             pt = new ImmediateParentTrade(
-                ptIdSetter, query["id"], parseInt(query["qty"]),
+                ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
                 query["side"], exchange, db
             );
             pts[ptIdSetter] = pt;

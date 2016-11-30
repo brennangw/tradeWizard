@@ -2,8 +2,9 @@ var moment = require('moment-timezone');
 var immediateChildTrade = require('./immediateChildTrade.js');
 
 var ImmediateParentTrade =
-    function (id, eqId, qty, side, exchange, db) {
+    function (id, uid, eqId, qty, side, exchange, db) {
         this.id = id;
+        this.uid = uid;
         this.equityId = eqId;
         this.qty = qty;
         this.side = side;
@@ -17,6 +18,7 @@ var ImmediateParentTrade =
 
 
         var toSave = {
+            uid : this.uid,
             pid : this.id,
             equityId : this.equityId,
             side : this.side,
@@ -35,7 +37,7 @@ var ImmediateParentTrade =
         this.start = function start () {
             console.log('started parent trade');
             var currentChildTrade = new immediateChildTrade(0, that.equityId,
-                that.side, that.qty, that.price, that.id, that.db);
+                that.uid, that.side, that.qty, that.price, that.id, that.db);
             that.exchange.submitTrade(currentChildTrade, that.db);
         };
 
