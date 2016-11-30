@@ -47,6 +47,12 @@ var Server = function (db, exchange) {
                 pt instanceof ImmediateParentTrade) {
                 response = pt.stop();
             }
+        } else if (mode === "newAmount" ) {
+            var pt = pts[query["pid"]];
+            if (pt instanceof TwapParentTrade ||
+                pt instanceof ImmediateParentTrade) {
+                response = pt.adjustQtyToTrade(query["newAmount"]);
+            }
         } else {
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
             res.writeHead(400, {'Content-Type': 'text/plain'});

@@ -9,12 +9,18 @@ var TwapParentTrade =
         this.uid = uid;
         this.equityId = eqId; //save
         this.side = side; //save
-        this.qty = qty; //save
+        this.qty = parseInt(qty); //save
         this.exchange = exchange;
         this.db = db;
 
         //other assignment based on parameters
-        this.qtyLeft = parseInt(this.qty);
+        //making this a function as if the amount required changes
+        //it is unkown the state of child trades and therefore
+        //adjusting qtyLeft wont work.
+        this.qtyLeft = function () {
+            return this.qty - this.qtySoFar;
+        };
+        this.qtySoFar = 0;
         this.price = "0";
         if (this.side == "buy") {
             this.price = "2147483647"; //max 32 bit int
@@ -90,13 +96,20 @@ var TwapParentTrade =
 
     TwapParentTrade.prototype.makeTrade = function () {
         //flexible so if a trade doesn't work TWAP can still be used.
-        var qtyToTrade = Math.ceil(this.qtyLeft/this.intervalsRemaining());
+        var qtyToTrade = Math.ceil(this.qtyLeft()/this.intervalsRemaining());
         console.log(qtyToTrade);
         var currentChildTrade = new TwapChildTrade(this.intervalsSoFar,
             qtyToTrade, this, this.db);
         console.log(currentChildTrade);
         this.intervalsSoFar++;
         this.exchange.submitTrade(currentChildTrade, this.db);
+    };
+
+    TwapParentTrade.prototype.adjustQtyToTrade = function (newAmount) {
+        if (Number.isFinite(newAmount) && newAmount > 1 ) {
+            this.qty = newAmount;
+        }
+        return "Something is wrong with the new amount.";
     };
 
 module.exports = TwapParentTrade;

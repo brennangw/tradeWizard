@@ -31,7 +31,7 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
           childTrade : that.id
         }, bodyAsJson);
         if (response.status === "SUCCESS") {
-            that.parent.qtyLeft -= that.qty;
+            that.parent.soFar += that.qty;
         }
         that.db.replies.save(response, function(err, doc) {
             if (err) {
