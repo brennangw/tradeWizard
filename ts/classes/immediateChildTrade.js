@@ -1,4 +1,4 @@
-var moment = require('moment-timezone');
+var moment = require("moment-timezone");
 
 var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentTradeId, db) {
     this.id = id;
@@ -9,7 +9,6 @@ var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentT
     this.price = price;
     this.parentTradeId = parentTradeId;
     this.db = db;
-    //todo: may not need to do the that = this
     var that = this;
     this.afterSending = function(error, response, body) {
         console.log("response for child trade id#" + that.id +
