@@ -1,4 +1,4 @@
-var moment = require('moment-timezone');
+var moment = require("moment-timezone");
 
 var TwapChildTrade = function (id, childQty, parentTrade, db) {
     this.id = id;
@@ -43,7 +43,6 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
     };
 
 };
-
 
 TwapChildTrade.prototype.beforeSending = function () {
     var toSave = {
