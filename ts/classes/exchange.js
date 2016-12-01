@@ -6,12 +6,12 @@ var Exchange = function (exchangeLocation) {
 
 Exchange.prototype.submitTrade = function (childTrade, db) {
     childTrade.beforeSending();
-    console.log(this.location + '/order' + childTrade.toQuery());
-    request((this.location + '/order' + childTrade.toQuery()) , childTrade.afterSending);
+    console.log(this.location + "/order" + childTrade.toQuery());
+    request((this.location + "/order" + childTrade.toQuery()), childTrade.afterSending);
 };
 
 Exchange.prototype.getTime = function () {
-    request((this.location + '/query?id=1'));
+    request((this.location + "/query?id=1"));
 };
 
 module.exports = Exchange;
