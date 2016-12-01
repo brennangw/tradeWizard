@@ -1,10 +1,11 @@
-const TwapParentTrade = require('./twapParentTrade.js');
-const ImmediateParentTrade = require('./immediateParentTrade.js');
-const http = require('http');
-const querystring = require('querystring');
-const Router = require('router');
-const finalhandler = require('finalhandler');
-const url = require('url');
+//server.js
+const TwapParentTrade = require("./twapParentTrade.js");
+const ImmediateParentTrade = require("./immediateParentTrade.js");
+const http = require("http");
+const querystring = require("querystring");
+const Router = require("router");
+const finalhandler = require("finalhandler");
+const url = require("url");
 
 var Server = function (db, exchange) {
 
@@ -13,7 +14,7 @@ var Server = function (db, exchange) {
 
     var ptIdSetter = null;
     // var ptIdSetter = 1;
-    db.currentPid.findOne({}, function (err,doc) {
+    db.currentPid.findOne({}, function (err, doc) {
         ptIdSetter = doc.pid;
     });
     this.router.get('/', function (req, res) {
