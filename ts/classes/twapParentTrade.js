@@ -1,6 +1,6 @@
 var request = require("request");
-var TwapChildTrade = require('./twapChildTrade.js');
-var moment = require('moment-timezone');
+var TwapChildTrade = require("./twapChildTrade.js");
+var moment = require("moment-timezone");
 
 var TwapParentTrade =
     function (id, uid, eqId, qty, side, exchange, db) {
@@ -91,7 +91,7 @@ var TwapParentTrade =
 
     TwapParentTrade.prototype.stop = function () {
         clearInterval(this.tradeTimer);
-        return "Stop an twap trade."
+        return "Stop an twap trade.";
     };
 
     TwapParentTrade.prototype.makeTrade = function () {
