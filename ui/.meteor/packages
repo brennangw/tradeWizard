@@ -37,3 +37,4 @@ http@1.2.9_1
 underscore
 session
 meteorhacks:aggregate
+tmeasday:publish-counts

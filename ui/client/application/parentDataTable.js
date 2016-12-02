@@ -4,14 +4,8 @@
 
 import { RepliesAggregate } from '../../lib/collections/repliesCollection.js';
 
-// var skipCount;
-
 Template.parentDataTable.onCreated(function() {
-    // var template = this;
-    // this.subscribe("marketData");
     console.log("parent data table created");
-    // var currentPage = parseInt(Router.current().params.page) || 1;
-    // skipCount = (currentPage - 1) * 10; // 10 records per page
 });
 
 Template.parentDataTable.helpers({
@@ -20,25 +14,38 @@ Template.parentDataTable.helpers({
         skipCount = (currentPage - 1) * 10;
         var allValues = RepliesAggregate.find({}, {
             sort: {pid: -1},
-            limit: 10,
+            limit: 7,
             skip: skipCount
         }).fetch();
         return allValues;
     },
     prevPage: function() {
-        var currentPage = parseInt(Router.current().params.page) || 1;
-        Session.set("currentPage", currentPage);
+        var currentPage = getCurrentPage();
         var previousPage = currentPage === 1 ? 1 : currentPage - 1;
-        console.log(currentPage);
-        console.log(previousPage);
         return Router.routes.landing.path({page: previousPage});
     },
     nextPage: function() {
-        var currentPage = parseInt(Router.current().params.page) || 1;
-        Session.set("currentPage", currentPage);
-        var nextPage = currentPage + 1;
-        console.log(currentPage);
-        console.log(nextPage);
+        var currentPage = getCurrentPage();
+        var nextPage = hasMorePages() ? currentPage + 1 : currentPage;
         return Router.routes.landing.path({page: nextPage});
+    },
+    prevPageClass: function() {
+        return getCurrentPage() <= 1 ? "disabled" : "";
+    },
+    nextPageClass: function() {
+        return hasMorePages() ? "" : "disabled";
     }
 });
+
+function hasMorePages() {
+    var currentPage = parseInt(Router.current().params.page) || 1;
+    var totalCustomers = Counts.get('parentTradeCount');
+    var pageLimit = 7;
+    return currentPage * pageLimit < totalCustomers;
+}
+
+function getCurrentPage() {
+    var currentPage = parseInt(Router.current().params.page) || 1;
+    Session.set("currentPage", currentPage);
+    return currentPage;
+}

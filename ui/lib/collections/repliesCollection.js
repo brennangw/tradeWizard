@@ -13,6 +13,11 @@ if (Meteor.isServer) {
         return Replies.find({});
     });
     Meteor.publish('replies_aggregate', function () {
+
+        Counts.publish(this, 'parentTradeCount', RepliesAggregate.find(), {
+            noReady: true
+        });
+
         return RepliesAggregate.find({});
     });
 } else if (Meteor.isClient) {
