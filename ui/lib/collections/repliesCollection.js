@@ -10,6 +10,11 @@ export const RepliesAggregate = new Mongo.Collection("parents");
 if (Meteor.isServer) {
 
     Meteor.publish('replies', function () {
+
+        Counts.publish(this, 'blotterTradeCount', Replies.find(), {
+            noReady: true
+        });
+
         return Replies.find({});
     });
     Meteor.publish('replies_aggregate', function () {

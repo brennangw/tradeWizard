@@ -21,12 +21,20 @@
                 <p>Loading</p>
             {{/if}}
             </tbody>
-            <!--<div class="newClass" align="right">-->
-            <!--<ul class="pager" >-->
-            <!--<li><a href="#">Previous</a></li>-->
-            <!--<li><a href="#">Next</a></li>-->
-            <!--</ul>-->
-            <!--</div>-->
         </table>
+        <nav>
+            <ul class="pager">
+                <li class="{{prevPageClass}}">
+                    <a id="prevPage" href="{{prevPage}}">
+                        <span aria-hidden="true">&larr;</span> Previous
+                    </a>
+                </li>
+                <li class="{{nextPageClass}}">
+                    <a id="nextPage" href="{{nextPage}}">
+                        Next <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </template>
