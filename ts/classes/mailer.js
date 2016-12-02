@@ -10,7 +10,7 @@ class Mailer {
 
         var mailOptions = {
             from: this.from, // sender address
-            to: this.from, // add parent trade's user id here (the email)
+            to: parentTrade.uid, // add parent trade's user id here (the email)
             subject: ("Trade " + parentTrade.id + " Finished"), // Subject line
             text: 'Your trade with id ' + parentTrade.id + '  has been completed.', // plaintext body
             html: '<p>Your trade with id ' + parentTrade.id + '  has been completed.</p>' // html body

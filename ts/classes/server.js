@@ -29,14 +29,14 @@ var Server = function (db, exchange, smtpsAddress, fromString) {
         var response = null;
         if (mode === "twap") {
             pt = new TwapParentTrade(
-                ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
+                ptIdSetter, query["email"], query["id"], parseInt(query["qty"]),
                 query["side"], exchange, db, mailer
             );
             pts[ptIdSetter] = pt;
             response = "Started TWAP Trade";
         } else if (mode === "immediate") {
             pt = new ImmediateParentTrade(
-                ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
+                ptIdSetter, query["email"], query["id"], parseInt(query["qty"]),
                 query["side"], exchange, db, mailer
             );
             pts[ptIdSetter] = pt;
