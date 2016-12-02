@@ -23,6 +23,6 @@ var requireLogin = function() {
 //hooks
 Router.onBeforeAction(requireLogin, {only: 'landing'});
 
-Router.route('/', {
+Router.route('/:page?', {
     name: 'landing'
 });
