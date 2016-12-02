@@ -22,6 +22,9 @@ Template.parentTradeModalTemplate.events({
         var currentParentId = Session.get('post');
         var mode = "stop";
 
+        var email = Meteor.user().emails[0].address;
+        console.log(email);
+
         $('#parentTradeModal').modal('hide');
 
         Meteor.call("getParentId", function(error, results) {
@@ -31,7 +34,7 @@ Template.parentTradeModalTemplate.events({
         });
         console.log(currentParentId);
 
-        Meteor.call("stopOrder", currentParentId, mode,  function(error, results) {
+        Meteor.call("stopOrder", currentParentId, mode, email, function(error, results) {
             // console.log(results);
             console.log(currentParentId);
             console.log("Cancelled a trade request");
