@@ -10,10 +10,21 @@ class Mailer {
 
         var mailOptions = {
             from: this.from, // sender address
-            to: this.from, // add parent trade's user id here (the email)
+            to: parentTrade.uid, // add parent trade's user id here (the email)
             subject: ("Trade " + parentTrade.id + " Finished"), // Subject line
-            text: 'Your trade with id ' + parentTrade.id + '  has been completed.', // plaintext body
-            html: '<p>Your trade with id ' + parentTrade.id + '  has been completed.</p>' // html body
+            text: ('Your trade with id ' + parentTrade.id
+            + '  has been completed.\nTrade Info Below:' +
+            '\nETF: ' + parentTrade.equityId +
+            '\nSide: ' + parentTrade.side +
+            '\nQuantity: ' + parentTrade.qty +
+            '\nTrade Id:'+ parentTrade.id
+            ), // plaintext body
+            html: ('<p>Your trade with id ' + parentTrade.id + '  has been completed.</p>' +
+            '<h3>Trade Info Below: </h3>' +
+            '<p>ETF: ' + parentTrade.equityId + '</p>' +
+            '<p>Side: ' + parentTrade.side + '</p>' +
+            '<p>Quantity: ' + parentTrade.qty + '</p>' +
+            '<p>Trade Id: ' + parentTrade.id + '</p>')
         };
 
         this.transporter.sendMail(mailOptions, function (error, info) {
