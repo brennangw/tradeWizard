@@ -31,7 +31,16 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
           childTrade : that.id
         }, bodyAsJson);
         if (response.status === "SUCCESS") {
-            that.parent.soFar += that.qty;
+            that.parent.qtySoFar += that.qty;
+        }
+        if (that.parent.intervalsSoFar >= that.parent.totalIntervals) {
+            if (that.parent.mailer) {
+                console.log("trying to send mail");
+                that.parent.mailer.sendParentTradeFinishedEmail(that.parent);
+            } else {
+                console.log("Would have sent an email");
+            }
+
         }
         that.db.replies.save(response, function(err, doc) {
             if (err) {

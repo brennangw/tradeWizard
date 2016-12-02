@@ -1,6 +1,6 @@
 var moment = require("moment-timezone");
 
-var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentTradeId, db) {
+var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentTradeId, db, parent) {
     this.id = id;
     this.equityId = equityId;
     this.uid = uid;
@@ -9,6 +9,7 @@ var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentT
     this.price = price;
     this.parentTradeId = parentTradeId;
     this.db = db;
+    this.parent = parent;
     var that = this;
     this.afterSending = function(error, response, body) {
         console.log("response for child trade id#" + that.id +
@@ -35,7 +36,13 @@ var immediateChildTrade = function (id, equityId, uid, side, qty, price, parentT
                 console.log(doc);
             }
         });
-    };
+        //todo uncomment for mailer
+        if (that.parent.mailer) {
+            that.parent.mailer.sendParentTradeFinishedEmail(that.parent);
+        } else {
+            console.log("would have sent an email");
+        }
+        };
 
 };
 

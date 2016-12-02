@@ -2,7 +2,7 @@ var moment = require("moment-timezone");
 var immediateChildTrade = require("./immediateChildTrade.js");
 
 var ImmediateParentTrade =
-    function (id, uid, eqId, qty, side, exchange, db) {
+    function (id, uid, eqId, qty, side, exchange, db, mailer) {
         this.id = id;
         this.uid = uid;
         this.equityId = eqId;
@@ -13,6 +13,7 @@ var ImmediateParentTrade =
             this.price = "2147483647"; //max 32 bit int
         }
         this.exchange = exchange;
+        this.mailer = mailer;
         this.db = db;
         var that = this;
 
@@ -34,12 +35,10 @@ var ImmediateParentTrade =
             }
         });
 
-        this.start = function start () {
             console.log("started parent trade");
             var currentChildTrade = new immediateChildTrade(0, that.equityId,
-                that.uid, that.side, that.qty, that.price, that.id, that.db);
+                that.uid, that.side, that.qty, that.price, that.id, that.db, that);
             that.exchange.submitTrade(currentChildTrade, that.db);
-        };
 
         this.stop = function () {
             return "Cannot stop an immediate trade.";

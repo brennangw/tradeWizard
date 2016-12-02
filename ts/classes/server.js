@@ -6,9 +6,13 @@ const querystring = require("querystring");
 const Router = require("router");
 const finalhandler = require("finalhandler");
 const url = require("url");
+const Mailer = require("./mailer");
 
-var Server = function (db, exchange) {
-
+var Server = function (db, exchange, smtpsAddress, fromString) {
+    var mailer = null;
+    if (smtpsAddress && fromString) {
+        var mailer = new Mailer(smtpsAddress, fromString); //todo fill these in
+    }
     //set up router
     this.router = Router();
 
@@ -26,14 +30,14 @@ var Server = function (db, exchange) {
         if (mode === "twap") {
             pt = new TwapParentTrade(
                 ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
-                query["side"], exchange, db
+                query["side"], exchange, db, mailer
             );
             pts[ptIdSetter] = pt;
             response = "Started TWAP Trade";
         } else if (mode === "immediate") {
             pt = new ImmediateParentTrade(
                 ptIdSetter, query["uid"], query["id"], parseInt(query["qty"]),
-                query["side"], exchange, db
+                query["side"], exchange, db, mailer
             );
             pts[ptIdSetter] = pt;
             response = "Started Immediate Trade";

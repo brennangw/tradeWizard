@@ -3,7 +3,7 @@ var TwapChildTrade = require("./twapChildTrade.js");
 var moment = require("moment-timezone");
 
 var TwapParentTrade =
-    function (id, uid, eqId, qty, side, exchange, db) {
+    function (id, uid, eqId, qty, side, exchange, db, mailer) {
         //direct parameter assignment
         this.id = id;  //save
         this.uid = uid;
@@ -12,6 +12,7 @@ var TwapParentTrade =
         this.qty = parseInt(qty); //save
         this.exchange = exchange;
         this.db = db;
+        this.mailer = mailer;
 
         //other assignment based on parameters
         //making this a function as if the amount required changes
@@ -27,7 +28,7 @@ var TwapParentTrade =
         }
 
         //other assignments
-        this.totalIntervals = 10;
+        this.totalIntervals = 10; //todo 10
         this.intervalsSoFar = 0;
 
         var that = this;
@@ -44,7 +45,7 @@ var TwapParentTrade =
             that.intervalLength = Math.floor((endTime -
                 currentTime)/that.totalIntervals); //in ms
             //for demo
-            that.intervalLength = 3000;
+            that.intervalLength = 1000;
             var toSave = {
                 uid : that.uid,
                 pid : that.id,
@@ -97,10 +98,10 @@ var TwapParentTrade =
     TwapParentTrade.prototype.makeTrade = function () {
         //flexible so if a trade doesn't work TWAP can still be used.
         var qtyToTrade = Math.ceil(this.qtyLeft()/this.intervalsRemaining());
-        console.log(qtyToTrade);
+        // console.log(qtyToTrade);
         var currentChildTrade = new TwapChildTrade(this.intervalsSoFar,
             qtyToTrade, this, this.db);
-        console.log(currentChildTrade);
+        // console.log(currentChildTrade);
         this.intervalsSoFar++;
         this.exchange.submitTrade(currentChildTrade, this.db);
     };
