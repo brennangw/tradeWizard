@@ -24,7 +24,7 @@ Meteor.startup(function() {
             return globalParentId;
         },
 
-        stopOrder: function(parentId, mode) {
+        stopOrder: function(parentId, mode, email) {
             this.unblock();
             console.log("Stopping order: ");
             console.log(parentId);
@@ -33,7 +33,8 @@ Meteor.startup(function() {
                 request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
-                    "mode=" + mode;
+                    "mode=" + mode +
+                    "&email=" + email;
                 var request = Meteor.http.call("GET", request_string);
                 console.log(request_string);
                 console.log(request);
@@ -44,7 +45,7 @@ Meteor.startup(function() {
             console.log("Made it to the end of the call");
         },
 
-        changeOrderType: function(parentId, mode) {
+        changeOrderType: function(parentId, mode, email) {
             this.unblock();
             console.log("Stopping order: ");
             console.log(parentId);
@@ -55,7 +56,8 @@ Meteor.startup(function() {
                 request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
-                    "mode=" + mode;
+                    "mode=" + mode +
+                    "&email=" + email;
                 var request = Meteor.http.call("GET", request_string);
                 console.log(request_string);
                 console.log(request);
@@ -65,7 +67,7 @@ Meteor.startup(function() {
             }
         },
 
-        sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber) {
+        sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber, email) {
             this.unblock();
             console.log("Sending request to node server. Parameters:");
             console.log(etfSymbol);
@@ -79,7 +81,8 @@ Meteor.startup(function() {
                 "/?id=3&" +
                 "qty=" + orderQty +
                 "&side=" + side +
-                "&mode=" + tradeStrategy;
+                "&mode=" + tradeStrategy +
+                "&email=" + email;
             var request = Meteor.http.call("GET", request_string);
             console.log(request_string);
             console.log(request);

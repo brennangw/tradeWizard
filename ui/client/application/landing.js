@@ -66,7 +66,8 @@ Template.createOrderForm.events({
         var strategy = target.strategy.value;
         var account = target.account.value;
         var side;
-        console.log(target.sell_button.value);
+        var email = Meteor.user().emails[0].address;
+        console.log(email);
 
         side = "sell";
         console.log(symbol);
@@ -82,7 +83,7 @@ Template.createOrderForm.events({
             strategy='immediate';
         }
 
-        Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, function() {
+        Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, email, function() {
             console.log("Sent a trade request");
         });
 
