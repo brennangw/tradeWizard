@@ -1,0 +1,59 @@
+UI Side Report:
+
+   While linting files with jshint for the app (Server):
+   lib/collections/marketData.js:1:1: 'import' is only available in ES6 (use
+   esnext option).
+   lib/collections/marketData.js:3:1: 'export' is only available in ES6 (use
+   esnext option).
+   lib/collections/marketData.js:3:8: 'const' is available in ES6 (use esnext
+   option) or Mozilla JS extensions (use moz).
+   lib/collections/repliesCollection.js:4:1: 'import' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:6:1: 'export' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:6:8: 'const' is available in ES6 (use
+   esnext option) or Mozilla JS extensions (use moz).
+   lib/collections/repliesCollection.js:8:1: 'export' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:8:8: 'const' is available in ES6 (use
+   esnext option) or Mozilla JS extensions (use moz).
+   lib/router.js:2:1: 'import' is only available in ES6 (use esnext option).
+   lib/router.js:2:10: 'MarketData' is defined but never used.
+   server/main.js:1:1: 'import' is only available in ES6 (use esnext option).
+
+   While linting files with jshint for the app (Client):
+   lib/collections/marketData.js:1:1: 'import' is only available in ES6 (use
+   esnext option).
+   lib/collections/marketData.js:3:1: 'export' is only available in ES6 (use
+   esnext option).
+   lib/collections/marketData.js:3:8: 'const' is available in ES6 (use esnext
+   option) or Mozilla JS extensions (use moz).
+   lib/collections/repliesCollection.js:4:1: 'import' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:6:1: 'export' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:6:8: 'const' is available in ES6 (use
+   esnext option) or Mozilla JS extensions (use moz).
+   lib/collections/repliesCollection.js:8:1: 'export' is only available in ES6
+   (use esnext option).
+   lib/collections/repliesCollection.js:8:8: 'const' is available in ES6 (use
+   esnext option) or Mozilla JS extensions (use moz).
+   lib/router.js:2:1: 'import' is only available in ES6 (use esnext option).
+   lib/router.js:2:10: 'MarketData' is defined but never used.
+   client/application/blotter/blotterDataTable.js:5:1: 'import' is only
+   available in ES6 (use esnext option).
+   client/application/blotter/blotterDataTable.js:10:9: 'skipCount' is not
+   defined.
+   client/application/blotter/blotterDataTable.js:14:19: 'skipCount' is not
+   defined.
+   client/application/marketData/marketData.js:1:1: 'import' is only available
+   in ES6 (use esnext option).
+   client/application/modals/childTradeModal.js:5:1: 'import' is only available
+   in ES6 (use esnext option).
+   client/application/parentDataTable.js:5:1: 'import' is only available in ES6
+   (use esnext option).
+   client/application/parentDataTable.js:14:9: 'skipCount' is not defined.
+   client/application/parentDataTable.js:18:19: 'skipCount' is not defined.
+
+For more information please refer to the supplementary documentation
+
