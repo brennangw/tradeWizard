@@ -34,7 +34,7 @@ Template.parentTradeModalTemplate.events({
         });
         console.log(currentParentId);
 
-        Meteor.call("stopOrder", currentParentId, mode, email, function(error, results) {
+        Meteor.call("stopOrder", currentParentId, mode, email, function() {
             // console.log(results);
             console.log(currentParentId);
             console.log("Cancelled a trade request");

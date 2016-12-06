@@ -1,16 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 
-// Replies = new Meteor.Collection("replies_from_the_exchange");
-
 var globalParentId;
 
 Meteor.startup(function() {
-
-    // ReactiveTable.publish("replies", Replies);
-
-    // Meteor.publish('replies', function () {
-    //     return Replies.find();
-    // });
 
     var PORT = 8081;
     Meteor.methods({
@@ -30,7 +22,7 @@ Meteor.startup(function() {
             console.log(parentId);
 
             try {
-                request_string = "http://localhost:" + PORT +
+                var request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
                     "mode=" + mode +
@@ -53,7 +45,7 @@ Meteor.startup(function() {
             mode = "twapToImmediate";
 
             try {
-                request_string = "http://localhost:" + PORT +
+                var request_string = "http://localhost:" + PORT +
                     "/?pid=" + parentId +
                     "&" +
                     "mode=" + mode +
@@ -77,7 +69,7 @@ Meteor.startup(function() {
             console.log(accountNumber);
 
         try {
-            request_string = "http://localhost:" + PORT +
+            var request_string = "http://localhost:" + PORT +
                 "/?id=3&" +
                 "qty=" + orderQty +
                 "&side=" + side +
