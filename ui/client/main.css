@@ -13,3 +13,11 @@
 .newClass {
     text-align: right;
 }
+
+.editable {
+    color: red;
+}
+
+.hidden {
+    visibility: hidden;
+}
