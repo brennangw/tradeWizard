@@ -25,22 +25,15 @@ Template.childReply.events({
         event.preventDefault();
 
         console.log("edit trade clicked");
+        console.log(this._id._str);
+        var id = '#' + this._id._str;
 
-        // var currentTD = $(this).parents('tr').find('td');
-        // $.each(currentTD, function() {$(this).prop('contenteditable', true)});
-
-        // if ($(this).html() == 'Edit') {
-        //     $.each(currentTD, function () {
-        //         $(this).prop('contenteditable', true)
-        //     });
-        // } else {
-        //     $.each(currentTD, function () {
-        //         $(this).prop('contenteditable', false)
-        //     });
-        // }
-
-
-
+        $(id).each(function () {
+            $.each(this.cells, function(){
+                $(this).prop('contenteditable', true);
+            });
+        });
+        
         // var currentParentId = Session.get('post');
         // var mode = "stop";
         //

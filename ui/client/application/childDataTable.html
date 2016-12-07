@@ -13,7 +13,7 @@
             <tbody>
             {{#if Template.subscriptionsReady}}
                 {{#each modal_function}}
-                    <tr>
+                    <tr id={{_id._str}}>
                         {{> childReply}}
                     </tr>
                 {{/each}}
