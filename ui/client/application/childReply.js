@@ -89,7 +89,3 @@ Template.childReply.events({
     }
 
 });
-
-function temp(stuff) {
-    console.log(stuff)
-}

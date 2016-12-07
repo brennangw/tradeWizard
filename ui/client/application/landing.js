@@ -4,6 +4,7 @@ Template.landing.onCreated(function() {
     // this.subscribe("marketData");
     console.log("Landing created");
     Session.set("blotterBoolean", false);
+
 });
 
 Template.landing.helpers({
@@ -54,7 +55,23 @@ Template.createOrderForm.helpers({
     }
 });
 
+var side;
+
 Template.createOrderForm.events({
+    'click #buyButton' : function () {
+        var temp = $('#buyButton').val();
+        if (temp == "BUY") {
+            side = "buy";
+        }
+    },
+
+    'click #sellButton' : function () {
+        var temp = $('#sellButton').val();
+        if (temp == "SELL") {
+            side = "sell";
+        }
+    },
+
     'submit .submitOrderForm': function(event) {
         event.preventDefault();
 
@@ -65,11 +82,13 @@ Template.createOrderForm.events({
         var orderQty = target.orderQty.value;
         var strategy = target.strategy.value;
         var account = target.account.value;
-        var side;
-        var email = Meteor.user().emails[0].address;
-        console.log(email);
 
-        side = "sell";
+        console.log(target);
+        console.log(target.value);
+
+        var email = Meteor.user().emails[0].address;
+
+        console.log(email);
         console.log(symbol);
         console.log(orderQty);
         console.log(strategy);
