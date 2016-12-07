@@ -12,6 +12,20 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
     this.db = db;
     //todo: may not need to do the that = this
     var that = this;
+    // var toSave = {
+    //     parentTradeId : that.parentTradeId,
+    //     uid : that.uid,
+    //     status : "IN PROGRESS",
+    //     childTrade : that.id
+    // };
+    // that.db.replies.save(toSave, function(err, doc) {
+    //     if (err) {
+    //         console.log("replies save callback error");
+    //         console.log(err);
+    //         console.log(doc);
+    //     }
+    // });
+
     this.afterSending = function(error, response, body) {
         console.log("response for child trade id#" + that.id +
             " of pt id#" + that.parentTradeId);
@@ -25,10 +39,7 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
         var response = Object.assign({
           readable_time : moment().tz("America/New_York").format("YYYY-MM-DD HH:mm z"),
           time : Date.now(),
-          parentTradeId : that.parentTradeId,
-          uid : that.uid,
           status : ((bodyAsJson.qty === 0) ? "FAILURE" : "SUCCESS"), //todo: remove this tmp fix for UI
-          childTrade : that.id
         }, bodyAsJson);
         if (response.status === "SUCCESS") {
             that.parent.qtySoFar += that.qty;
@@ -42,11 +53,13 @@ var TwapChildTrade = function (id, childQty, parentTrade, db) {
             }
 
         }
-        that.db.replies.save(response, function(err, doc) {
+        that.db.replies.findAndModify({
+            query: { parentTradeId: that.parentTradeId, childTrade : that.id },
+            update: { $set: response }
+        },
+        function(err, doc, lastErrorObject) {
             if (err) {
-                console.log("replies save callback error");
                 console.log(err);
-                console.log(doc);
             }
         });
     };

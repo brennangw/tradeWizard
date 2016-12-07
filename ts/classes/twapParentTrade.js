@@ -45,7 +45,7 @@ var TwapParentTrade =
             that.intervalLength = Math.floor((endTime -
                 currentTime)/that.totalIntervals); //in ms
             //for demo
-            that.intervalLength = 1000;
+            that.intervalLength = 6000;
             var toSave = {
                 uid : that.uid,
                 pid : that.id,
@@ -62,6 +62,23 @@ var TwapParentTrade =
                     console.log(doc);
                 }
             });
+            for (var index = 0; index < that.totalIntervals; index++) {
+                var toSave = {
+                    time : Date.now(),
+                    parentTradeId : that.id,
+                    uid : that.uid,
+                    status : "IN PROGRESS",
+                    childTrade : index
+                };
+                that.db.replies.save(toSave, function (err,doc) {
+                    if (err) {
+                        console.log("replies save callback error");
+                        console.log(err);
+                        console.log(doc);
+                    }
+                })
+            }
+
             //first trade
             that.makeTrade();
 
