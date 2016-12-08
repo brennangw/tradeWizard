@@ -1,0 +1,27 @@
+Plan a FIVE-minute "showcase" demo that highlights your application and demonstrates MVP (minimal viable product).  Write a human-executable script explaining what you plan to show and what you plan to say, practice the demo to make sure everything works and fits in the time allotted, and include this script in your github repository. Make sure to tag the exact file versions to be used for the demo.  Note this "showcase" demo will be presented on demo day.  Thus you need to submit this document before the demo, not after.  
+
+
+The script has been written and included in the GitHub repository. However, the exact file version has not been tagged yet as still some changes need to be made prior to the demo.
+
+First, the application will be briefly introduced before delving into the details of the wide range of functionalities implemented.
+
+Consequently, the application will be introduced from the viewpoint of a user.  Hence, one of the team members shall start working with the application as if he were a trader. Nevertheless, each step will be described in more detail than if solely a user was clicking the required buttons. As the code is well-written and documented, the team needs to inform the customer. Otherwise, the customer would not know since he/she would check merely the user interface.
+
+The variety of functions to introduce includes but is not limited to:
+
+1. Creating an account
+2. Logging in
+3. Logging out
+4. Placing sell orders
+5. Placing buy orders
+6. Viewing all trades
+7. Viewing a separate list of child and parent trades
+8. Viewing graphs directly interacting with the exchange
+9. Cancelling pending orders
+10. Displaying the status of each trade
+
+Consequently, we shall briefly explain the design decisions made for the user interface. 
+
+Ultimately, we shall ask the customer whether anything else needs to be completed and thank him for his patience and collaboration.
+
+Afterward, we shall hearken to his/her comments. 
