@@ -4,6 +4,11 @@ that is difficult to cover via code, and hence is better tested by the user.
 Most of these system tests are on the base of greybox testing where both user interface
 as well as database inputs are being checked for correctness.
 
+The tests below should be quite comprehensive. Albeit they are rather simple, these tests test the entire interaction of the system.
+
+If there was a significant bug, the following tests would likely reveal it.
+
+
 1. Test Buy orders:
 
 a. Click 'Place Order'
@@ -18,11 +23,11 @@ c. All parameters are correct
 d. Child and Parent trades display as they ought to
 e. Check if exchange is responding
 
-1. Test Sell orders:
+2. Test Sell orders:
 
 a. Click 'Place Order'
 b. Enter parameters for the trade
-c. Click 'Buy'
+c. Click 'Sell'
 
 Check that:
 
@@ -31,6 +36,152 @@ b. Order is added into the database
 c. All parameters are correct
 d. Child and Parent trades display as they ought to
 e. Check if exchange is responding
+
+
+3. Test Pagination:
+
+a. Place a large amount of orders
+b. Click through the pagination
+
+Check that:
+
+a. Orders are in the desirable order
+b. Pagination works both ways without altering the order of orders
+c. There are no changes in the database
+
+4. Change Strategy of ongoing order:
+
+a. Place Buy or Sell Order
+b. Before all child trades are completed, chenge TWAP strategy to Immediate Sale
+
+Check that:
+
+a. Change of strategy is reflected in the database
+b. Remaining order is 'immediately' completed
+
+
+5. Cancel Pending Order:
+
+a. Use a Mock object to place an order that will likely not be confirmed by the exchange
+b. The order should result as pending
+c. Click 'Cancel' to cancel the order
+
+Check that:
+
+a. There is no information about the order in the database
+b.  There is a clear log of the order in the table - although it was never confirmed
+
+
+6. Place many orders
+
+a. Place a very large set of orders
+
+Check that:
+
+a. the system is not slowing down
+b. Slow system may imply memory leaks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
