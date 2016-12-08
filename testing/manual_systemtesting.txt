@@ -1,0 +1,37 @@
+These system tests are designed to cover a broad range of test
+that is difficult to cover via code, and hence is better tested by the user.
+
+Most of these system tests are on the base of greybox testing where both user interface
+as well as database inputs are being checked for correctness.
+
+1. Test Buy orders:
+
+a. Click 'Place Order'
+b. Enter parameters for the trade
+c. Click 'Buy'
+
+Check that:
+
+a. Order is added to the table
+b. Order is added into the database
+c. All parameters are correct
+d. Child and Parent trades display as they ought to
+e. Check if exchange is responding
+
+1. Test Sell orders:
+
+a. Click 'Place Order'
+b. Enter parameters for the trade
+c. Click 'Buy'
+
+Check that:
+
+a. Order is added to the table
+b. Order is added into the database
+c. All parameters are correct
+d. Child and Parent trades display as they ought to
+e. Check if exchange is responding
+
+
+
+
