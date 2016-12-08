@@ -1,0 +1,3 @@
+Add the coverage report to your github repository as a version controlled file
+
+Make sure to commit the revised report after every further change to either the code or the test cases.
