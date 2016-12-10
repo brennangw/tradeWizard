@@ -1,3 +1,14 @@
 Add the coverage report to your github repository as a version controlled file
 
 Make sure to commit the revised report after every further change to either the code or the test cases.
+
+Below is a sample coverage run with istanbul from the shell:
+
+=============================================================================
+Writing coverage object [/home/stan/Documents/ASE/tradeWizard/testing/coverage/coverage.json]
+Writing coverage reports at [/home/stan/Documents/ASE/tradeWizard/testing/coverage]
+=============================================================================
+/home/stan/Documents/ASE/tradeWizard/testing/login_test.js:9
+__cov_VUmfGSuyYXJqk$wrzTuDRg.s['1']++;Feature('Unit Test Cases');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['2']++;Scenario('Arrive at homepage and get instructions',I=>{__cov_VUmfGSuyYXJqk$wrzTuDRg.s['3']++;I.amOnPage('http://localhost:3000/');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['4']++;I.see('You must login to use the system');});__cov_VUmfGSuyYXJqk$wrzTuDRg.s['5']++;Scenario('Forgot password feature',I=>{__cov_VUmfGSuyYXJqk$wrzTuDRg.s['6']++;I.amOnPage('http://localhost:3000/');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['7']++;I.see('You must login to use the system');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['8']++;I.click('Sign in');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['9']++;I.click('Forgot password');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['10']++;I.see('Reset password');});__cov_VUmfGSuyYXJqk$wrzTuDRg.s['11']++;Scenario('Forgot password feature-incorrect email id entered',I=>{__cov_VUmfGSuyYXJqk$wrzTuDRg.s['12']++;I.amOnPage('http://localhost:3000/');__cov_VUmfGSuyYXJqk$wrzTuDRg.s['13']++;I.see
+
+

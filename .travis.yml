@@ -5,7 +5,14 @@ before_install:
   - "cd ui" 
   - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-laika/master/configure.sh | /bin/sh"
 
+addons:
+  code_climate:
+    repo_token: 0e755c30ee59bf730f62e9a4d73240b2326ceeedda01860451059d598e6a70ce 
+
 services:
   - mongodb
 env:
 - LAIKA_OPTIONS="-t 5000"
+
+after_success:
+  - codeclimate-test-reporter < lcov.info
