@@ -16,9 +16,20 @@ Template.ReactiveChart.helpers({
 
             // Getting data for charts
 
-            var time = Replies.find({},{timestamp: 1});
-            var quan = Replies.find({},{qty: 1});
-            console.log("my time"+time);
+            var time = Replies.find({}, {
+                sort: {timestamp: -1},
+                limit: 5,
+                timestamp:1
+            }).fetch();
+            var quan = Replies.find({}, {
+                sort: {timestamp: -1},
+                limit: 5,
+                qty:1
+            }).fetch();
+            var arr = Object.keys(time).map(function (key) { return time[key]; });
+            var qtyarr = Object.keys(time).map(function (key) { return time[key]; });
+            console.log("my time"+arr);
+
             console.log("my quan"+quan);
             Meteor.defer(function() {
             Highcharts.chart('chart', {
