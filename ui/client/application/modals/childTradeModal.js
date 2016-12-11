@@ -14,6 +14,32 @@ Template.childDataTable.helpers({
     }
 });
 
+Template.parentTradeModalTemplate.helpers({
+    progress_function : function () {
+
+        var currentParentId = Session.get('post');
+        console.log(currentParentId);
+        // count for trades that are successful
+        var totalCount= Replies.find({parentTradeId:currentParentId}).fetch().length;
+        var successCount=Replies.find({parentTradeId:currentParentId, status:"SUCCESS"}).fetch().length;
+        if(totalCount!=0)
+        {
+            var progress=(successCount/totalCount)*100;
+        }
+        else
+        {
+            var progress=0;
+
+        }
+        console.log(successCount);
+        console.log(totalCount);
+
+        //var temp = "\"width:" + progress + "%";
+
+        return progress;
+    }
+});
+
 Template.parentTradeModalTemplate.events({
 
     'click #cancelOrder': function (event) {

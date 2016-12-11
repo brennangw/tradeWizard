@@ -3,6 +3,7 @@
  */
 
 import { RepliesAggregate } from '../../lib/collections/repliesCollection.js';
+import { Replies } from '../../lib/collections/repliesCollection.js';
 
 Template.parentDataTable.onCreated(function() {
     console.log("parent data table created");
@@ -34,6 +35,25 @@ Template.parentDataTable.helpers({
     },
     nextPageClass: function() {
         return hasMorePages() ? "" : "disabled";
+    },
+
+    progress_function2 : function (currentParentId) {
+
+        var totalCount= Replies.find({parentTradeId:currentParentId}).fetch().length;
+        var successCount=Replies.find({parentTradeId:currentParentId, status:"SUCCESS"}).fetch().length;
+        if(totalCount!=0)
+        {
+            var progress=(successCount/totalCount)*100;
+        }
+        else
+        {
+            var progress=0;
+
+        }
+        console.log(successCount);
+        console.log(totalCount);
+
+        return progress;
     }
 });
 

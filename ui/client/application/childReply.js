@@ -86,6 +86,8 @@ Template.childReply.events({
         $('#editTrade').toggleClass('hidden');
         $('#saveTrade').toggleClass('hidden');
 
+        // call function place order
+
     }
 
 });

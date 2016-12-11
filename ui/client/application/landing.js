@@ -13,6 +13,7 @@ Template.landing.helpers({
     }
 });
 
+
 Template.landing.events({
     'click .parentTable tbody tr': function () {
 
