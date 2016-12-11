@@ -3,12 +3,322 @@ Please add here:
 1. any comments/bugs that need to be corrected
 2. The history of bugs and how they were resolved.
 
+There is an issue tracker with out tools - Travis, Istanbul, and code climae as described in the submission document
 
 BUGS TO FIX:
 
+1. add Graphs
+2. Failed trades dont  display in the table
+3. Child Trades are executed in correct order
+4. Buy button does not work correctly
+
+BUGS THAT HAVE BEEN FIXED (STARTING Assignment 7):
+
+1. Clicking a Buy button is blocked on the Place Order page.
+
+The issue has been corrected by removing a blocking attribute from the function eclaration in main in tradeWizard/ui
+- hte green buy button can be clicked but new error is introduced - buy does not work properly
+
+2. There is not a list of all trades
+
+Trades have been combined and show in 1 table by clicking a giant green button all
+-the trades can be further segmented in logical order.
+
+3. Twap should the be the default trading strategy
+
+Twap has been set as he default trading strategy
+-Immediate Sale is given less relevance
+
+4.Store Uid
+
+Uid has been stored with each executed trade in tradeWizard/ui
+-each trde in the tble now shows trader UID
+
+5.   When hover over a table ensure the user knows that rows are clickable
+
+A feature has been added that gives a row over which a mouse hovers a different color.
 
 
-BUGS THAT HAVE BEEN FIXED (STARTING Assignment 8):
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
