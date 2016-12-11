@@ -4,6 +4,11 @@ that is difficult to cover via code, and hence is better tested by the user.
 Most of these system tests are on the base of greybox testing where both user interface
 as well as database inputs are being checked for correctness.
 
+The system tests were properly tested and any bugs found were recorder in the manual issue tracker
+
+Particularly, test 8 needs much work.
+
+
 The tests below should be quite comprehensive. Albeit they are rather simple, these tests test the entire interaction of the system.
 
 If there was a significant bug, the following tests would likely reveal it.
@@ -80,6 +85,117 @@ Check that:
 
 a. the system is not slowing down
 b. Slow system may imply memory leaks
+
+
+7. I can display details about each trade
+
+Check that
+
+a. clicking on a row in the main trade table displays a list of child orders and details about a trade
+
+8. Graph is constantly updated from the exchange
+
+a.  check that graph is being constanty updated from the exchange
+
+
+9.  Check an existing user can log in
+
+a. check that main page is displayed afterward
+
+10.  Check an existing user can log out
+
+a. check that main page vanishes afterward and login page appears
+
+
+11. 
+
+a. Check that Creating new user is saved.
+
+a. create new user, log in, log out, and log back in with the same user name
+b. if the procedure does not succeed, creating new users does not work properly
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

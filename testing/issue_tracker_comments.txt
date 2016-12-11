@@ -12,7 +12,7 @@ BUGS TO FIX:
 3. Child Trades are executed in correct order
 4. Buy button does not work correctly
 
-BUGS THAT HAVE BEEN FIXED (STARTING Assignment 7):
+BUGS THAT HAVE BEEN FIXED :
 
 1. Clicking a Buy button is blocked on the Place Order page.
 

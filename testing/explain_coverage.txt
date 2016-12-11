@@ -2,6 +2,13 @@ Also write a brief document that explains any remaining problems in reaching 100
 
 The main issue is that coverage services designed specifically for meteor do not integrate well with Travis CI. Hence, they are able to read only plain JavaScript, ad throw non-existing errors.
 
+Problematic tests:
+
+1. checking connections between various parts of the system (manual system tests present)
+
+2. Security login and logout features - easier to test manually with meteor
+
+
 Since coverage was initially far from 100% I strived for increasing the number of unit tests but primarily observed what code was not being tested. Due to the complexity of the system it was impossible to find a testing solution for all code although we have surely spent a significant amount of time trying to simulate code with mock objects and other testing tools.  Hence, we did not reach 100% and strived for approximately 85%.  There were plenty of issues with testing the user interface. Due to some ongoing test changes, the test report occasionally produced errors that were corrected. The report was included in:
 
 
