@@ -22,6 +22,8 @@
         </div>
 
     </div>
+
+
     <br>
     <div class="table-responsive table">
             {{#if blotterShown}}
@@ -38,7 +40,12 @@
         {{> marketData }}
     </div>
     <br>
-    {{>ReactiveChart}}
+    <div id="chart" style="min-width: 500px; height: 370px; margin: auto ; float: left ">
+        {{> ReactiveChart}}
+    </div>
+    <div id="chart2" style="min-width: 500px; height: 370px; margin: auto ; float: right ">
+        {{> ReactiveChart}}
+    </div>
 
 </template>
 
