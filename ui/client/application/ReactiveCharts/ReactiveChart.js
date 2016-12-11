@@ -156,6 +156,9 @@ Template.ReactiveChart.helpers({
                 title: {
                     text: 'Orders Distribution'
                 },
+                subtitle: {
+                    text: 'Source: TradeWizard'
+                },
                 tooltip: {
                     pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
                 },
