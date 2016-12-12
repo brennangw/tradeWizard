@@ -6,7 +6,7 @@ import { RepliesAggregate } from '../../lib/collections/repliesCollection.js';
 import { Replies } from '../../lib/collections/repliesCollection.js';
 
 Template.parentDataTable.onCreated(function() {
-   // console.log("parent data table created");
+
 });
 
 Template.parentDataTable.helpers({

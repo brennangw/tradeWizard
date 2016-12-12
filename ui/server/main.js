@@ -18,8 +18,6 @@ Meteor.startup(function() {
 
         stopOrder: function(parentId, mode, email) {
             this.unblock();
-           // console.log("Stopping order: ");
-            // console.log(parentId);
 
             try {
                 var request_string = "http://localhost:" + PORT +
@@ -31,15 +29,12 @@ Meteor.startup(function() {
 
             }
             catch(err){
-              //  console.log(err.message);
+               console.log(err.message);
             }
-           // console.log("Made it to the end of the call");
         },
 
         changeOrderType: function(parentId, mode, email) {
             this.unblock();
-            //console.log("Stopping order: ");
-            //console.log(parentId);
 
             mode = "twapToImmediate";
 
@@ -53,7 +48,7 @@ Meteor.startup(function() {
 
             }
             catch(err){
-              //  console.log(err.message);
+               console.log(err.message);
             }
         },
 
@@ -73,10 +68,9 @@ Meteor.startup(function() {
 
             }
             catch(err){
-               // console.log(err.message);
+               console.log(err.message);
             }
-            // return request;
-           // console.log("Made it to the end of the call");
+
         }
     });
 });

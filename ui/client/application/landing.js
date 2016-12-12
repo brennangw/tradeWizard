@@ -1,7 +1,6 @@
 //Landing page helper functions
 
 Template.landing.onCreated(function() {
-    // this.subscribe("marketData");
     console.log("Landing created");
     Session.set("blotterBoolean", false);
 
@@ -19,14 +18,13 @@ Template.landing.events({
 
         var post = this;
         Session.set('post', post.pid);
-       // console.log(post.pid);
 
         $('#parentTradeModal').modal('show');
 
         var pid2 = post.pid;
 
         Meteor.call("passParentId", pid2, function() {
-        //    console.log("Sent the selected PID");
+
         });
     },
 
@@ -97,7 +95,7 @@ Template.createOrderForm.events({
         }
 
         Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, email, function() {
-           // console.log("Sent a trade request");
+
         });
 
     }

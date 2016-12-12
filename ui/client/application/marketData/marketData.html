@@ -1,17 +1,10 @@
 <template name="marketData">
     <div class="contain">
         <div class="contain" align="center" >
-            <!--<div class="col-md-6">-->
                 <span class="col-sm-9 label label-primary align-center text-justify" ><h5>Top Ask: Price {{data.top_ask.price}} | Size {{data.top_ask.size}}</h5></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <!--</div>-->
-            <!--<div class="col-md-6">-->
                 <span class="col-sm-9 label label-success"><h5>Top Bid: Price {{data.top_bid.price}} | Size {{data.top_bid.size}}</h5></span>
-            <span class="col-sm-9 label label-warning"><h5>Spread: {{get_Spread data.top_bid.price data.top_ask.price}}</h5></span>
-            <!--</div>-->
+                <span class="col-sm-9 label label-warning"><h5>Spread: {{get_Spread data.top_bid.price data.top_ask.price}}</h5></span>
         </div>
         <br>
-        <!--<div class="row">-->
-            <!--<span class="col-sm-3 label label-success"><h5>Top Bid: Price {{data.top_bid.price}} Size {{data.top_bid.size}}</h5></span>-->
-        <!--</div>-->
     </div>
 </template>
