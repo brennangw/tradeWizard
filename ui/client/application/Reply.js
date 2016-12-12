@@ -14,5 +14,10 @@ Template.Reply.helpers({
         }
 
         return progress;
+    },
+    side_checker: function (side) {
+      if(side=="buy")
+
+        return true;
     }
 });
