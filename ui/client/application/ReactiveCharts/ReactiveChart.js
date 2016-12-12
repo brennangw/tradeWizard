@@ -16,21 +16,23 @@ Template.ReactiveChart.helpers({
 
             // Getting data for charts
 
-            var time = Replies.find({}, {
-                sort: {timestamp: -1},
-                limit: 5,
-                timestamp:1
-            }).fetch();
-            var quan = Replies.find({}, {
-                sort: {timestamp: -1},
-                limit: 5,
-                qty:1
-            }).fetch();
-            var arr = Object.keys(time).map(function (key) { return time[key]; });
-            var qtyarr = Object.keys(time).map(function (key) { return time[key]; });
-            console.log("my time"+arr);
+            var timeArray = [];
+            var qtyArray = [];
 
-            console.log("my quan"+quan);
+            var time = RepliesAggregate.find({}, {
+                sort: {time: -1},
+                limit: 5
+            }).fetch();
+
+
+            for(var i = 0; i < time.length; i++) {
+                timeArray.push(time[i].time);
+                qtyArray.push(time[i].qty);
+            }
+
+            console.log(timeArray);
+            console.log(qtyArray);
+
             Meteor.defer(function() {
             Highcharts.chart('chart', {
                 chart: {
@@ -49,7 +51,8 @@ Template.ReactiveChart.helpers({
                 xAxis: {
                     title: {
                         text: 'TimeStamp'
-                    }
+                    },
+                    categories: timeArray
                 },
                 yAxis: {
                     title: {
@@ -65,11 +68,8 @@ Template.ReactiveChart.helpers({
                     }
                 },
                 series: [{
-                    name: 'Time',
-                    data: [quan]
-                }, {
-                    name: 'London',
-                    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                    name: 'Quantity',
+                    data: qtyArray
                 }]
             })  }); },
 
@@ -200,10 +200,10 @@ Template.ReactiveChart.helpers({
                     type: 'line'
                 },
                 title: {
-                    text: 'Monthly Average Temperature'
+                    text: 'PNL : Market'
                 },
                 subtitle: {
-                    text: 'Source: WorldClimate.com'
+                    text: 'Source: TradeWizard'
                 },
                 xAxis: {
                     categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']

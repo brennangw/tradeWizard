@@ -10,7 +10,7 @@ Template.childReply.onCreated( function(){
 
 Template.childReply.helpers({
     success_function : function () {
-        if (status=="SUCCESS") {
+        if (status=="IN PROGRESS") {
             return true;
         }
         else {
