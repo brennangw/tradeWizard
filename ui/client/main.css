@@ -33,3 +33,9 @@
 .progress {
     padding-bottom: 0;
 }
+.contain {
+    text-align: center;
+    float: right;
+    margin-right: 25%;
+
+}
