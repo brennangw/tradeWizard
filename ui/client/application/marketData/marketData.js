@@ -6,7 +6,7 @@ Template.marketData.onCreated(function bodyOnCreated() {
 
 Template.marketData.helpers({
     data : function() {
-        console.log("I am being called");
+       // console.log("I am being called");
         return MarketData.findOne({});
 
     }

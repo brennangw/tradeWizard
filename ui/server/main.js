@@ -18,8 +18,8 @@ Meteor.startup(function() {
 
         stopOrder: function(parentId, mode, email) {
             this.unblock();
-            console.log("Stopping order: ");
-            console.log(parentId);
+           // console.log("Stopping order: ");
+            // console.log(parentId);
 
             try {
                 var request_string = "http://localhost:" + PORT +
@@ -28,19 +28,18 @@ Meteor.startup(function() {
                     "mode=" + mode +
                     "&email=" + email;
                 var request = Meteor.http.call("GET", request_string);
-                console.log(request_string);
-                console.log(request);
+
             }
             catch(err){
-                console.log(err.message);
+              //  console.log(err.message);
             }
-            console.log("Made it to the end of the call");
+           // console.log("Made it to the end of the call");
         },
 
         changeOrderType: function(parentId, mode, email) {
             this.unblock();
-            console.log("Stopping order: ");
-            console.log(parentId);
+            //console.log("Stopping order: ");
+            //console.log(parentId);
 
             mode = "twapToImmediate";
 
@@ -51,22 +50,16 @@ Meteor.startup(function() {
                     "mode=" + mode +
                     "&email=" + email;
                 var request = Meteor.http.call("GET", request_string);
-                console.log(request_string);
-                console.log(request);
+
             }
             catch(err){
-                console.log(err.message);
+              //  console.log(err.message);
             }
         },
 
         sendTradeRequest: function(etfSymbol, orderQty, side, tradeStrategy, accountNumber, email) {
             this.unblock();
-            console.log("Sending request to node server. Parameters:");
-            console.log(etfSymbol);
-            console.log(orderQty);
-            console.log(side);
-            console.log(tradeStrategy);
-            console.log(accountNumber);
+
 
         try {
             var request_string = "http://localhost:" + PORT +
@@ -76,15 +69,14 @@ Meteor.startup(function() {
                 "&mode=" + tradeStrategy +
                 "&email=" + email;
             var request = Meteor.http.call("GET", request_string);
-            console.log(request_string);
-            console.log(request);
+
 
             }
             catch(err){
-                console.log(err.message);
+               // console.log(err.message);
             }
             // return request;
-            console.log("Made it to the end of the call");
+           // console.log("Made it to the end of the call");
         }
     });
 });

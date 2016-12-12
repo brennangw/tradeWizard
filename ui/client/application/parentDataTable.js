@@ -6,7 +6,7 @@ import { RepliesAggregate } from '../../lib/collections/repliesCollection.js';
 import { Replies } from '../../lib/collections/repliesCollection.js';
 
 Template.parentDataTable.onCreated(function() {
-    console.log("parent data table created");
+   // console.log("parent data table created");
 });
 
 Template.parentDataTable.helpers({
@@ -50,8 +50,7 @@ Template.parentDataTable.helpers({
             var progress=0;
 
         }
-        console.log(successCount);
-        console.log(totalCount);
+
 
         return progress;
     }

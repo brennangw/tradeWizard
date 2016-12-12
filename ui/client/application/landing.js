@@ -19,21 +19,21 @@ Template.landing.events({
 
         var post = this;
         Session.set('post', post.pid);
-        console.log(post.pid);
+       // console.log(post.pid);
 
         $('#parentTradeModal').modal('show');
 
         var pid2 = post.pid;
 
         Meteor.call("passParentId", pid2, function() {
-            console.log("Sent the selected PID");
+        //    console.log("Sent the selected PID");
         });
     },
 
     'click #showBlotter': function (event) {
         event.preventDefault();
 
-        console.log("Show blotter clicked");
+       // console.log("Show blotter clicked");
 
         Session.set("blotterBoolean", true);
 
@@ -42,7 +42,7 @@ Template.landing.events({
     'click #hideBlotter': function (event) {
         event.preventDefault();
 
-        console.log("Hide blotter clicked");
+      //  console.log("Hide blotter clicked");
 
         Session.set("blotterBoolean", false);
 
@@ -84,17 +84,10 @@ Template.createOrderForm.events({
         var strategy = target.strategy.value;
         var account = target.account.value;
 
-        console.log(target);
-        console.log(target.value);
+
 
         var email = Meteor.user().emails[0].address;
 
-        console.log(email);
-        console.log(symbol);
-        console.log(orderQty);
-        console.log(strategy);
-        console.log(account);
-        console.log(side);
 
         if (strategy == "Time-Weighted Average Price (TWAP)") {
             strategy='twap';
@@ -104,7 +97,7 @@ Template.createOrderForm.events({
         }
 
         Meteor.call("sendTradeRequest", symbol, orderQty, side, strategy, account, email, function() {
-            console.log("Sent a trade request");
+           // console.log("Sent a trade request");
         });
 
     }

@@ -25,15 +25,15 @@ Template.childReply.events({
         event.preventDefault();
 
         var clss = $('#editTrade').attr('oid');
-        console.log(clss);
+
 
         // crr = '[' + clss +']';
         //
         // var temp = document.querySelectorAll(crr);
         // console.log(temp);
 
-        console.log("edit trade clicked");
-        console.log(this._id._str);
+       // console.log("edit trade clicked");
+      //  console.log(this._id._str);
         var id = '#' + this._id._str;
 
         $(id).each(function () {
@@ -73,7 +73,7 @@ Template.childReply.events({
     'click #saveTrade': function (event) {
         event.preventDefault();
 
-        console.log(this._id._str);
+       // console.log(this._id._str);
         var id = '#' + this._id._str;
 
         $(id).each(function () {

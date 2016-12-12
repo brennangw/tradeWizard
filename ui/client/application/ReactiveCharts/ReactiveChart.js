@@ -30,8 +30,7 @@ Template.ReactiveChart.helpers({
                 qtyArray.push(time[i].qty);
             }
 
-            console.log(timeArray);
-            console.log(qtyArray);
+
 
             Meteor.defer(function() {
             Highcharts.chart('chart', {
@@ -79,8 +78,7 @@ Template.ReactiveChart.helpers({
 
         var sellquan = Replies.find({side: "sell"}).count();
         var buyquan = Replies.find({side: "buy"}).count();
-        console.log("test"+sellquan);
-        console.log("test2"+buyquan);
+
         Meteor.defer(function() {
             Highcharts.chart('chart2', {
                 chart: {
@@ -199,8 +197,7 @@ Template.ReactiveChart.helpers({
             topaskpriceArray.push(mdata[i].top_ask.price);
             topbidpriceArray.push(mdata[i].top_bid.price);
         }
-        console.log("market: "+topaskpriceArray);
-        console.log(topbidpriceArray);
+
         Meteor.defer(function() {
             Highcharts.chart('chart4', {
                 chart: {

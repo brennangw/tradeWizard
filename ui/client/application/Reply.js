@@ -12,8 +12,6 @@ Template.Reply.helpers({
             var progress = 0;
 
         }
-        console.log(successCount);
-        console.log(totalCount);
 
         return progress;
     }
