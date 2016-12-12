@@ -23,7 +23,6 @@
 
     </div>
 
-
     <br>
     <div class="table-responsive table">
             {{#if blotterShown}}
@@ -36,23 +35,41 @@
                 </section>
             {{/if}}
     </div>
+    <br>
     <div>
         {{> marketData }}
     </div>
     <br>
-    <div id="chart4" style="min-width: 500px; height: 400px; margin: 2% ; float: left ">
-        {{> ReactiveChart}}
-    </div>
-    <div id="chart" style="min-width: 500px; height: 400px; margin: 2% ; float: right ">
-        {{> ReactiveChart}}
-    </div>
-    <div id="chart2" style="min-width: 500px; height: 400px; margin: 2% ; float: right ">
-        {{> ReactiveChart}}
-    </div>
-    <br>
-    <div id="chart3" style="min-width: 500px; height: 400px; margin: 2% ; float: left ">
-        {{> ReactiveChart}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="chart4" style="min-width: 500px; height: 400px; margin: 2% ; float: left ">
+                    {{> ReactiveChart}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="chart" style="min-width: 500px; height: 400px; margin: 2% ; float: right ">
+                    {{> ReactiveChart}}
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="chart2" style="min-width: 500px; height: 400px; margin: 2% ; float: right ">
+                    {{> ReactiveChart}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div id="chart3" style="min-width: 500px; height: 400px; margin: 2% ; float: left ">
+                    {{> ReactiveChart}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
 </template>
 
