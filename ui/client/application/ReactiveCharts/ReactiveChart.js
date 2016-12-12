@@ -21,7 +21,7 @@ Template.ReactiveChart.helpers({
 
             var time = RepliesAggregate.find({}, {
                 sort: {time: -1},
-                limit: 5
+                limit: 10
             }).fetch();
 
 
@@ -211,7 +211,7 @@ Template.ReactiveChart.helpers({
                     type: 'line'
                 },
                 title: {
-                    text: 'PNL : Market'
+                    text: 'Market Data'
                 },
                 subtitle: {
                     text: 'Source: TradeWizard'
