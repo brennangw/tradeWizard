@@ -3,13 +3,11 @@
  */
 
 var status;
-var qty1;
-var avg_price1;
+
 
 Template.childReply.onCreated( function(){
     status = $('#status').attr("class");
-    qty1 = $('#qty').attr("class");
-    avg_price1 = $('#avg_price').attr("class");
+
 
 });
 
@@ -23,11 +21,11 @@ Template.childReply.helpers({
         }
     },
 
-    mcalculator: function () {
-        var val=qty1*avg_price1;
-        console.log(qty1);
-        console.log(avg_price1);
-       // console.log(val);
+    mcalculator: function (qty,avg_price) {
+       var val= Number (qty*avg_price).toFixed(2);
+        console.log(qty);
+        console.log(avg_price);
+        console.log(val);
         return val;
 
     }
