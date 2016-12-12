@@ -63,7 +63,7 @@ Template.ReactiveChart.helpers({
                         dataLabels: {
                             enabled: true
                         },
-                        enableMouseTracking: false
+                        enableMouseTracking: true
                     }
                 },
                 series: [{
@@ -108,7 +108,7 @@ Template.ReactiveChart.helpers({
                         dataLabels: {
                             enabled: true
                         },
-                        enableMouseTracking: false
+                        enableMouseTracking: true
                     },
 
                         column: {
@@ -167,7 +167,8 @@ Template.ReactiveChart.helpers({
                         dataLabels: {
                             enabled: false
                         },
-                        showInLegend: true
+                        showInLegend: true,
+                        enableMouseTracking: true
                     }
                 },
                 series: [{
@@ -194,10 +195,12 @@ Template.ReactiveChart.helpers({
       //  console.log("market: "+mdata);
         var topaskpriceArray = [];
         var topbidpriceArray = [];
+        var spreadArray=[];
 
         for(var i = mdata.length-1; i >= 0; i--) {
             topaskpriceArray.push(mdata[i].top_ask.price);
             topbidpriceArray.push(mdata[i].top_bid.price);
+            spreadArray.push(Math.abs(mdata[i].top_ask.price-mdata[i].top_bid.price));
         }
 
         Meteor.defer(function() {
@@ -227,17 +230,21 @@ Template.ReactiveChart.helpers({
                     line: {
                         dataLabels: {
                             enabled: true
+
                         },
-                        enableMouseTracking: false
+                        enableMouseTracking: true
                     }
                 },
                 series: [{
                     name: 'Top Ask',
                     data: topaskpriceArray
+
                 }, {
                     name: 'Top Bid',
                     data: topbidpriceArray
-                }]
+                }
+
+                ]
             })  }); }
 
 
