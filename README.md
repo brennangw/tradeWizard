@@ -9,13 +9,27 @@ Immediate Sales: This should execute the bulk order in one go at the market pric
 Time-Weighted Average Price: TWAP is an industry term that breaks down a single trade into several smaller transactions to minimize the impact from fluctuations of market price. 												
 There are two main benefits provided by our system. First, by automatically breaking down and issuing orders to exchanges the system automates the time consuming and error-prone task that traders would otherwise have to be performed manually. Second, all commands by users and transactions with the exchange will be tracked and recorded, providing greater accountancy for JPMorgan’s trading activities. The result of this will be that JPMorgan can identify better performance trends and consultant an accurate historical account when investigating an issues.
 
-## Technolgies Used:
+## Technolgies Used
 We have used Meteor framework for full stack development as it is fast and provides several out of box features to build user based web-applications. Meteor is a Javascript based full-stack framework built on Node.js. Our database is Mongo DB hosted on cloud (MLab).
 
-## Connect to Cloud Database:
-To connect to cloud database add following environment variable during meteor app startup:
-
-  MONGO_URL=mongodb://dbuser:dbpassword@ds057476.mlab.com:57476/dev
-  
-Contact bgw2119 at columbia dot edu or ig2333 at columbia dot edu or ag3749 at columbia dot edu or skp2140 at columbia dot edu for dbusername and dbpassword
-
+## How to Run Stuff
+ 
+     Trading System:
+     
+     W/O Mail:
+     
+     node main.js 8081 http://localhost:8080 mongodb://ts:tspassword12@ds057476.mlab.com:57476/dev 
+     
+     
+     W/ Mail:
+     
+     Node main.js 8081 http://localhost:8080 mongodb://ts:tspassword12@ds057476.mlab.com:57476/dev smtps://tradewizardmailing%40gmail.com:ILOVEASE2@smtp.gmail.com tradewizardmailing@gmail.com
+     
+     Contact bgw2119 at columbia dot edu or ig2333 at columbia dot edu or ag3749 at columbia dot edu or skp2140 at columbia dot edu for logon credentials
+     
+     Pinger:
+     Run exchange first.
+     node main.js http://localhost:8080 mongodb://ts:tspassword12@ds057476.mlab.com:57476/dev 1
+     
+     UI:
+     MONGO_URL=mongodb://ts:tspassword12@ds057476.mlab.com:57476/dev meteor
