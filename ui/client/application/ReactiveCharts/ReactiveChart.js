@@ -188,12 +188,14 @@ Template.ReactiveChart.helpers({
     createChart4: function () {
 
 
-        var mdata = MarketData.find({}).fetch();
+        var mdata = MarketData.find({}, {
+
+        }).fetch();
       //  console.log("market: "+mdata);
         var topaskpriceArray = [];
         var topbidpriceArray = [];
 
-        for(var i = 0; i < mdata.length; i++) {
+        for(var i = mdata.length-1; i >= 0; i--) {
             topaskpriceArray.push(mdata[i].top_ask.price);
             topbidpriceArray.push(mdata[i].top_bid.price);
         }
