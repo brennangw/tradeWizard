@@ -23,9 +23,6 @@ Template.childReply.helpers({
 
     mcalculator: function (qty,avg_price) {
        var val= Number (qty*avg_price).toFixed(2);
-        console.log(qty);
-        console.log(avg_price);
-        console.log(val);
         return val;
 
     }
