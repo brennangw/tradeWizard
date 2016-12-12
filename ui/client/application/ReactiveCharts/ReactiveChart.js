@@ -4,7 +4,7 @@
 
 import { Replies } from '../../../lib/collections/repliesCollection.js';
 import { RepliesAggregate } from '../../../lib/collections/repliesCollection.js';
-
+import { MarketData } from '../../../lib/collections/marketData.js';
     // Meteor.subscribe("Tasks");
     var Highcharts = require('highcharts');
 
@@ -190,6 +190,17 @@ Template.ReactiveChart.helpers({
     createChart4: function () {
 
 
+        var mdata = MarketData.find({}).fetch();
+      //  console.log("market: "+mdata);
+        var topaskpriceArray = [];
+        var topbidpriceArray = [];
+
+        for(var i = 0; i < mdata.length; i++) {
+            topaskpriceArray.push(mdata[i].top_ask.price);
+            topbidpriceArray.push(mdata[i].top_bid.price);
+        }
+        console.log("market: "+topaskpriceArray);
+        console.log(topbidpriceArray);
         Meteor.defer(function() {
             Highcharts.chart('chart4', {
                 chart: {
@@ -206,11 +217,11 @@ Template.ReactiveChart.helpers({
                     text: 'Source: TradeWizard'
                 },
                 xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    categories: [ 'Time']
                 },
                 yAxis: {
                     title: {
-                        text: 'Temperature (°C)'
+                        text: 'Price'
                     }
                 },
                 plotOptions: {
@@ -222,11 +233,11 @@ Template.ReactiveChart.helpers({
                     }
                 },
                 series: [{
-                    name: 'Tokyo',
-                    data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                    name: 'Top Ask',
+                    data: topaskpriceArray
                 }, {
-                    name: 'London',
-                    data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+                    name: 'Top Bid',
+                    data: topbidpriceArray
                 }]
             })  }); }
 
